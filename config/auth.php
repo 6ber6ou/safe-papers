@@ -1,6 +1,7 @@
 <?php
 
-return [
+return
+    [
 
     /*
     |--------------------------------------------------------------------------
@@ -13,10 +14,13 @@ return [
     |
     */
 
-    'defaults' => [
+    'defaults' =>
+        [
+
         'guard' => 'web',
-        'passwords' => 'users',
-    ],
+        'passwords' => 'users'
+
+        ],
 
     /*
     |--------------------------------------------------------------------------
@@ -35,17 +39,25 @@ return [
     |
     */
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+    'guards' =>
+        [
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
+        'web'       =>
+            [
+
+            'driver'        =>      'session',
+            'provider'      =>       'users'
+
         ],
-    ],
+        'api'       =>
+            [
+
+            'driver'        =>      'token',
+            'provider'      =>      'users'
+
+            ]
+
+        ],
 
     /*
     |--------------------------------------------------------------------------
@@ -64,17 +76,22 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
+    'providers' =>
+        [
 
+        'users'     =>
+            [
+
+            'driver'        =>      'eloquent',
+            'model'         =>      App\User::class
+
+            ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
-        // ],
-    ],
+        // ]
+
+        ],
 
     /*
     |--------------------------------------------------------------------------
@@ -91,12 +108,18 @@ return [
     |
     */
 
-    'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-    ],
+    'passwords' =>
+        [
 
-];
+        'users'     =>
+            [
+
+            'provider'      =>      'users',
+            'table'         =>      'password_resets',
+            'expire'        =>      60
+
+            ]
+
+        ]
+
+    ];

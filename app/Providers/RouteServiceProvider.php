@@ -1,12 +1,11 @@
-<?php
-
-namespace App\Providers;
+<?php namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
-{
+    {
+
     /**
      * This namespace is applied to your controller routes.
      *
@@ -16,17 +15,23 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
 
+    // ------------------------------------------------------------
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @return void
      */
     public function boot()
-    {
+        {
+
         //
 
         parent::boot();
-    }
+
+        }
+
+    // ------------------------------------------------------------
 
     /**
      * Define the routes for the application.
@@ -34,13 +39,17 @@ class RouteServiceProvider extends ServiceProvider
      * @return void
      */
     public function map()
-    {
+        {
+
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
 
         //
-    }
+
+        }
+
+    // ------------------------------------------------------------
 
     /**
      * Define the "web" routes for the application.
@@ -50,14 +59,24 @@ class RouteServiceProvider extends ServiceProvider
      * @return void
      */
     protected function mapWebRoutes()
-    {
-        Route::group([
+        {
+
+        Route::group(
+            [
+
             'middleware' => 'web',
             'namespace' => $this->namespace,
-        ], function ($router) {
-            require base_path('routes/web.php');
-        });
-    }
+            ],
+        function( $router )
+            {
+
+            require base_path( 'routes/web.php' );
+
+            } );
+
+        }
+
+    // ------------------------------------------------------------
 
     /**
      * Define the "api" routes for the application.
@@ -67,13 +86,22 @@ class RouteServiceProvider extends ServiceProvider
      * @return void
      */
     protected function mapApiRoutes()
-    {
-        Route::group([
+        {
+
+        Route::group(
+            [
+
             'middleware' => 'api',
             'namespace' => $this->namespace,
             'prefix' => 'api',
-        ], function ($router) {
-            require base_path('routes/api.php');
-        });
+        ],
+        function( $router )
+            {
+
+            require base_path( 'routes/api.php' );
+
+            } );
+
+        }
+
     }
-}
