@@ -1,15 +1,10 @@
 <?php
 
-// ********
-// WELLCOME
-// ********
+// ****
+// HOME
+// ****
 
-Route::get( '/', function()
-	{
-
-    return view( 'welcome' );
-
-	} );
+Route::get( '/', 'HomeController@index' );
 
 // ------------------------------------------------------------
 
@@ -18,11 +13,3 @@ Route::get( '/', function()
 // ****
 
 Auth::routes();
-
-// ------------------------------------------------------------
-
-// ****
-// HOME
-// ****
-
-Route::get( '/home', 'HomeController@index' );
