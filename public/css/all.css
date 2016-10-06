@@ -5779,11 +5779,16 @@ button.close {
     display: none !important; } }
 
 /* Custom */
+/* ******* /*
 /* Balises */
+/* ******* */
 body {
   background: white !important; }
 
+/* ------------------------------------------------------------ */
+/* **** */
 /* Logo */
+/* **** */
 #logo a {
   color: #777777 !important;
   text-decoration: none; }
@@ -5795,9 +5800,65 @@ body {
   height: 40px;
   margin-right: 10px; }
 
+/* ------------------------------------------------------------ */
+/* ***** */
 /* Panel */
+/* ***** */
 .panel {
   margin-bottom: 31px !important; }
+
+/* ============================================================ */
+/* ************ */
+/* Break Points */
+/* ************ */
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+  /*
+	body
+		{
+		background : yellow !important;
+		}
+*/
+  .header {
+    margin: 30px; } }
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  /*
+	body
+		{
+		background : red !important;
+		}
+*/ }
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  /*
+	body
+		{
+		background : blue !important;
+		}
+*/
+  .header {
+    margin: 0; } }
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  /*
+	body
+		{
+		background : green !important;
+		}
+*/ }
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  /*
+	body
+		{
+		background : orange !important;
+		}
+*/ }
 
 /*# sourceMappingURL=app.css.map */
 

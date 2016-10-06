@@ -17,4 +17,16 @@ class ForgotPasswordController extends Controller
 
         }
 
+    // ------------------------------------------------------------
+
+    public function showLinkRequestForm()
+    	{
+
+    	$page = 'Mot de passe oublié';
+
+        return view( 'auth.passwords.email', compact( 'page' ) );
+
+    	}
+
+
     }
