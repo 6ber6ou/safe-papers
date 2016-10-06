@@ -45,12 +45,12 @@
 
                     <ul class="nav nav-pills pull-right">
 
-                        <li role="presentation" class="active">
-                            <a href="#">Accueil</a>
+                        <li role="presentation" class="{{ $page == 'home' ? 'active' : '' }}">
+                            <a href="{{ route( 'home' ) }}">Accueil</a>
                         </li>
 
-                        <li role="presentation">
-                            <a href="#">Inscription</a>
+                        <li role="presentation" class="{{ $page == 'register' ? 'active' : '' }}">
+                            <a href="{{ route( 'register' ) }}">Inscription</a>
                         </li>
 
                     </ul>
@@ -60,7 +60,7 @@
 
                 <!-- LOGO -->
                 <h3 class="text-muted" id="logo">
-                    <a href="#"><img src="{{ asset( 'img/icon-safe.png' ) }}" alt="Coffre fort">{{ config('app.name', 'Safe Papers') }}</a>
+                    <a href="{{ route( 'home' ) }}"><img src="{{ asset( 'img/icon-safe.png' ) }}" alt="Coffre fort">{{ config('app.name', 'Safe Papers') }}</a>
                 </h3>
                 <!-- End ... LOGO -->
 
@@ -75,7 +75,7 @@
             <footer class="footer text-right">
 
                 <p>
-                    &copy; 2016 6ber6ou.
+                    Copyright 2016 - {{ date( 'Y' ) }} &copy; 6ber6ou.
                 </p>
 
             </footer>

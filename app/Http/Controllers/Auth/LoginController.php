@@ -10,7 +10,7 @@ class LoginController extends Controller
 
     // ------------------------------------------------------------
 
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     // ------------------------------------------------------------
 
@@ -20,5 +20,17 @@ class LoginController extends Controller
         $this->middleware( 'guest', [ 'except' => 'logout' ] );
 
         }
+
+    // ------------------------------------------------------------
+
+    public function showLoginForm()
+        {
+
+        $page = 'login';
+
+        return view( 'auth.login', compact( 'page' ) );
+
+        }
+
 
     }

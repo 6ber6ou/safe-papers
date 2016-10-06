@@ -5795,4 +5795,8 @@ body {
   height: 40px;
   margin-right: 10px; }
 
+/* Panel */
+.panel {
+  margin-bottom: 31px !important; }
+
 /*# sourceMappingURL=app.css.map */

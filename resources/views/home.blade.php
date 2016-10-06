@@ -21,7 +21,7 @@
         </p>
 
         <p>
-            <a class="btn btn-lg btn-success" href="#" role="button">Connectez-vous</a>
+            <a class="btn btn-lg btn-success" href="{{ route( 'login' ) }}" role="button">Connectez-vous</a>
         </p>
 
     </div>
@@ -42,11 +42,11 @@
             </p>
 
             <h4>
-                <img src="{{ asset( 'img/icon-eye.png' ) }}" alt="Upload">
+                <img src="{{ asset( 'img/icon-search.png' ) }}" alt="Dossier">
             </h4>
 
             <p>
-                Consultez en ligne, de façon sécurisée, tous vos documents stockés.
+                Retrouvez facilement vos documents, par nom ou catégorie.
             </p>
 
         </div>
@@ -63,12 +63,13 @@
                 Créez des catégories, et classez vos documents pour les retrouver plus rapidement.
             </p>
 
+
             <h4>
-                <img src="{{ asset( 'img/icon-search.png' ) }}" alt="Dossier">
+                <img src="{{ asset( 'img/icon-eye.png' ) }}" alt="Upload">
             </h4>
 
             <p>
-                Retrouvez facilement vos documents, par nom ou catégorie.
+                Consultez en ligne, de façon sécurisée, tous vos documents stockés.
             </p>
 
         </div>
