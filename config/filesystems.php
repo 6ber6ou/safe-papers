@@ -64,10 +64,10 @@ return
             [
 
             'driver'            =>      's3',
-            'key'               =>      'your-key',
-            'secret'            =>      'your-secret',
-            'region'            =>      'your-region',
-            'bucket'            =>      'your-bucket'
+            'key'               =>      env( 'S3_key' ),
+            'secret'            =>      env( 'S3_secret' ),
+            'region'            =>      'us-west-2',
+            'bucket'            =>      'images.6ber6ou.com'
 
             ]
 

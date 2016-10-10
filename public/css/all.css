@@ -5778,6 +5778,14 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+/* Balises */
+/* ******* */
+/* BALISES */
+/* ******* */
+h3 {
+  margin-top: 0;
+  margin-bottom: 30px; }
+
 /* Custom */
 /* ******* /*
 /* Balises */
@@ -5859,6 +5867,17 @@ body {
 		background : orange !important;
 		}
 */ }
+
+/* Autocomplete */
+/* ************ */
+/* AUTOCOMPLETE */
+/* ************ */
+.fuzzy-autocomplete-result {
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 90% !important; }
+  .fuzzy-autocomplete-result p {
+    width: 100% !important; }
 
 /*# sourceMappingURL=app.css.map */
 

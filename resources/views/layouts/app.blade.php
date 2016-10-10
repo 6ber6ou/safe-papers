@@ -45,17 +45,21 @@
 
                     <ul class="nav nav-pills pull-right">
 
-                        <li role="presentation" class="{{ $page == 'home' ? 'active' : '' }}">
-                            <a href="{{ route( 'home' ) }}">Accueil</a>
-                        </li>
-
                         @if( ! Auth::check() )
+
+                            <li role="presentation" class="{{ $page == 'home' ? 'active' : '' }}">
+                                <a href="{{ route( 'home' ) }}">Accueil</a>
+                            </li>
 
                             <li role="presentation" class="{{ $page == 'register' ? 'active' : '' }}">
                                 <a href="{{ route( 'register' ) }}">Inscription</a>
                             </li>
 
                         @else
+
+                            <li role="presentation" class="{{ $page == 'add_paper' ? 'active' : '' }}">
+                                <a href="{{ route( 'add_new_paper' ) }}">Ajouter</a>
+                            </li>
 
                             <li role="presentation">
                                 <a href="{{ route( 'logout' ) }}">Déconnexion</a>
@@ -95,7 +99,9 @@
         <!-- End ... CONTAINER -->
 
         <!-- Scripts -->
-        <script src="{{ asset( '/js/app.js' ) }}"></script>
+        <script src="{{ asset( '/js/all.js' ) }}"></script>
+
+        @include( 'layouts.footer' )
 
     </body>
 

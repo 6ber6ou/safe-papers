@@ -21,7 +21,17 @@
         </p>
 
         <p>
-            <a class="btn btn-lg btn-success" href="{{ route( 'login' ) }}" role="button">Connectez-vous</a>
+
+            @if( ! Auth::check() )
+
+                <a class="btn btn-lg btn-success" href="{{ route( 'login' ) }}" role="button">Connectez-vous</a>
+
+            @else
+
+                <a class="btn btn-lg btn-primary" href="{{ route( 'add_new_paper' ) }}" role="button">Ajouter un papier</a>
+
+            @endif
+
         </p>
 
     </div>

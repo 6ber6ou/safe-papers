@@ -38,3 +38,4 @@ Route::get( '/', [ 'as' => 'home', 'uses' => 'HomeController@index' ] );
 // *************
 
 Route::get( '/ajouter/nouveau-papier', [ 'as' => 'add_new_paper', 'uses' => 'PaperController@add' ] );
+Route::post( '/sauvegarder/nouveau-papier', [ 'as' => 'save_new_paper', 'uses' => 'PaperController@save' ] );

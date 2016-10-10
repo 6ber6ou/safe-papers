@@ -20,12 +20,19 @@ elixir( mix =>
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    mix.webpack(
-    		[
+    // mix.webpack( 'app.js', 'public/js/app.js' );
 
-    		'app.js',
-    		'ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js'
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    		] );
+    mix.scripts(
+        [
+
+        'jquery/jquery.js',
+        'bootstrap/bootstrap.js',
+        'ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js',
+        'fuzzy-autocomplete/fuzzy-autocomplete.js',
+        'init_fuzzy-autocomplete.js'
+
+        ], 'public/js/all.js' );
 
 	} );
