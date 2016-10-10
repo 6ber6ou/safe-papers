@@ -10,7 +10,7 @@ class LoginController extends Controller
 
     // ------------------------------------------------------------
 
-    protected $redirectTo = '/';
+    protected $redirectTo = '/ajouter/nouveau-papier';
 
     // ------------------------------------------------------------
 
@@ -31,6 +31,5 @@ class LoginController extends Controller
         return view( 'auth.login', compact( 'page' ) );
 
         }
-
 
     }

@@ -9,6 +9,19 @@ Auth::routes();
 Route::get( '/connexion', [ 'as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm' ] );
 
 Route::get( '/inscription', [ 'as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm' ] );
+Route::post( '/register', [ 'as' => 'post_register', 'uses' => 'Auth\RegisterController@register' ] );
+
+Route::get( '/connexion', [ 'as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm' ] );
+Route::post( '/connexion', [ 'as' => 'post_login', 'uses' => 'Auth\LoginController@login' ] );
+
+Route::get( '/deconnexion', [ 'as' => 'logout', 'uses' => 'Auth\LoginController@logout' ] );
+
+Route::get( '/mot-de-passe/oublie', [ 'as' => 'password_reset', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm' ] );
+Route::post( '/mot-de-passe/oublie', [ 'as' => 'post_password_reset', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail' ] );
+
+Route::get( '/reinitialisation/mot-de-passe/{token}', [ 'as' => 'initialize_password', 'uses' => 'Auth\ResetPasswordController@showResetForm' ] );
+Route::post( '/reinitialisation/mot-de-passe', [ 'as' => 'post_initialize_password', 'uses' => 'Auth\ResetPasswordController@reset' ] );
+
 
 // ------------------------------------------------------------
 
@@ -19,3 +32,9 @@ Route::get( '/inscription', [ 'as' => 'register', 'uses' => 'Auth\RegisterContro
 Route::get( '/', [ 'as' => 'home', 'uses' => 'HomeController@index' ] );
 
 // ------------------------------------------------------------
+
+// *************
+// ADD NEW PAPER
+// *************
+
+Route::get( '/ajouter/nouveau-papier', [ 'as' => 'add_new_paper', 'uses' => 'PaperController@add' ] );

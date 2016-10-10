@@ -49,9 +49,19 @@
                             <a href="{{ route( 'home' ) }}">Accueil</a>
                         </li>
 
-                        <li role="presentation" class="{{ $page == 'register' ? 'active' : '' }}">
-                            <a href="{{ route( 'register' ) }}">Inscription</a>
-                        </li>
+                        @if( ! Auth::check() )
+
+                            <li role="presentation" class="{{ $page == 'register' ? 'active' : '' }}">
+                                <a href="{{ route( 'register' ) }}">Inscription</a>
+                            </li>
+
+                        @else
+
+                            <li role="presentation">
+                                <a href="{{ route( 'logout' ) }}">Déconnexion</a>
+                            </li>
+
+                        @endif
 
                     </ul>
 
@@ -68,7 +78,7 @@
             <!-- End ... HEADER -->
 
             <!-- CONTENT -->
-            @yield('content')
+            @yield( 'content' )
             <!-- End ... CONTENT -->
 
             <!-- FOOTER -->

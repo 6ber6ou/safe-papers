@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
 
 class ResetPasswordController extends Controller
     {
@@ -21,11 +22,6 @@ class ResetPasswordController extends Controller
 
     // ------------------------------------------------------------
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
         {
 
@@ -35,17 +31,23 @@ class ResetPasswordController extends Controller
 
     // ------------------------------------------------------------
 
-    public function showResetForm( Request $request, $token = NULL )
+    public function redirectPath()
         {
-dd( 'oo' );
-        return view( 'auth.passwords.reset' )
-            ->with( [ 'token' => $token, 'email' => $request->email ] );
+
+        return property_exists( $this, 'redirectTo' ) ? $this->redirectTo : '/ajouter/nouveau-papier';
 
         }
 
+    // ------------------------------------------------------------
 
+    public function showResetForm( Request $request, $token = NULL )
+        {
 
+        $page = 'Réinitialiser votre mot de passe';
 
+        return view( 'auth.passwords.reset', compact( 'page' ) )
+            ->with( [ 'token' => $token, 'email' => $request->email ] );
 
+        }
 
     }
