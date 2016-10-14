@@ -13,11 +13,11 @@
 				Ajouter un papier
 			</h3>
 
+            <!-- FLASH MESSAGE -->
+            @include('flash::message')
+            <!-- End ... FLASH MESSAGE -->
 
-
-
-
-
+            <!-- FORM -->
             <form class="form-horizontal" role="search" method="POST" action="{{ route( 'save_new_paper' ) }}" enctype="multipart/form-data">
 
                 {{ csrf_field() }}
@@ -130,6 +130,7 @@
 
 
 			</form>
+            <!-- End ... FORM -->
 
 		</div>
 

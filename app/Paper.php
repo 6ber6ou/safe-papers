@@ -5,6 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 class Paper extends Model
 	{
 
-	protected $fillable = [ 'path', 'user_id', 'category_id' ];
+	protected $fillable = [ 'description', 'path', 'user_id', 'category_id' ];
 
 	}

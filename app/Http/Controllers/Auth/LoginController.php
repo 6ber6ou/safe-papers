@@ -10,7 +10,7 @@ class LoginController extends Controller
 
     // ------------------------------------------------------------
 
-    protected $redirectTo = '/ajouter/nouveau-papier';
+    protected $redirectTo = '/';
 
     // ------------------------------------------------------------
 

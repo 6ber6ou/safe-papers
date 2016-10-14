@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 
+use App\Paper;
+use Auth;
+use Jenssegers\Date\Date;
+
 class HomeController extends Controller
     {
 
@@ -19,8 +23,17 @@ class HomeController extends Controller
 
         $page = 'home';
 
+        if( Auth::check() )
+            {
+
+            $latest_papers = Paper::where( 'user_id', Auth::user()->id )->take( 10 )->orderBy( 'id', 'desc' )->get();
+
+            return view( 'home', compact( 'page', 'latest_papers' ) );
+
+            }
+
         return view( 'home', compact( 'page' ) );
 
-        }
+         }
 
     }

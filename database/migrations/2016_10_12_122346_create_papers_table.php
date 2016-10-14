@@ -14,6 +14,7 @@ class CreatePapersTable extends Migration
             {
 
             $table->increments( 'id' );
+            $table->string( 'description' );
             $table->string( 'path' );
             $table->integer( 'user_id' );
             $table->integer( 'category_id' );

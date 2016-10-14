@@ -14,7 +14,8 @@ elixir( mix =>
     	[
 
     	'./public/css/app.css',
-        './public/css/style.css'
+        './public/css/style.css',
+        'font-awesome.css'
 
     	], 'public/css/all.css' );
 
@@ -31,6 +32,7 @@ elixir( mix =>
         'bootstrap/bootstrap.js',
         'ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js',
         'fuzzy-autocomplete/fuzzy-autocomplete.js',
+        'delete_paper.js',
         'init_fuzzy-autocomplete.js'
 
         ], 'public/js/all.js' );

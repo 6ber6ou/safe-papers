@@ -67,7 +67,8 @@ return
             'key'               =>      env( 'S3_key' ),
             'secret'            =>      env( 'S3_secret' ),
             'region'            =>      'us-west-2',
-            'bucket'            =>      'images.6ber6ou.com'
+            'bucket'            =>      'images.6ber6ou.com',
+            'visibility'        =>      'public'
 
             ]
 

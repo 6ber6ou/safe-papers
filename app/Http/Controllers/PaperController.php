@@ -7,6 +7,7 @@ use App\Category;
 use App\Paper;
 use Auth;
 use JavaScript;
+use Storage;
 
 class PaperController extends Controller
 	{
@@ -52,20 +53,34 @@ class PaperController extends Controller
 
 			}
 
-		$file_name = request()->file( 'file' )->store( 'safe-papers', 's3' );
+		$path = request()->file( 'file' )->store( 'safe-papers', 's3' );
 
 		$category = Category::select( 'id' )->where( 'name', $request->input( 'category' ) )->first();
 
 		Paper::create(
 			[
 
-			'path' => $file_name,
+			'description' => $request->input( 'description' ),
+			'path' => $path,
 			'user_id' => Auth::user()->id,
 			'category_id' => $category->id
 
 			] );
 
+		flash( 'Opération effectuée avec succès !', 'success' );
+
 		return back();
+
+		}
+
+    // ------------------------------------------------------------
+
+	public function delete()
+		{
+
+		Paper::find( $_GET[ 'id' ] )->delete();
+
+		return $_GET[ 'id' ];
 
 		}
 
