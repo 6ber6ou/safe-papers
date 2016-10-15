@@ -4,6 +4,10 @@
 
 @section( 'content' )
 
+    <!-- FLASH MESSAGE -->
+    @include('flash::message')
+    <!-- End ... FLASH MESSAGE -->
+
     <!-- JUMBOTRON -->
     <div class="jumbotron">
 

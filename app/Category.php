@@ -7,4 +7,13 @@ class Category extends Model
 
 	protected $fillable = [ 'name', 'user_id' ];
 
+	// ------------------------------------------------------
+
+	public function papers()
+		{
+
+		return $this->hasMany( 'App\Paper' );
+
+		}
+
 	}

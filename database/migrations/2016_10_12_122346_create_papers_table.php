@@ -18,6 +18,7 @@ class CreatePapersTable extends Migration
             $table->string( 'path' );
             $table->integer( 'user_id' );
             $table->integer( 'category_id' );
+            $table->timestamp( 'consulted_at' )->nullable();
             $table->timestamps();
 
             } );

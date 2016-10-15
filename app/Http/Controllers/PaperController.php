@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Category;
+use App\Http\Requests\SavePaperRequest;
+use App\Http\Requests\UpdatePaperRequest;
 use App\Paper;
 use Auth;
 use JavaScript;
@@ -35,8 +37,10 @@ class PaperController extends Controller
 
     // ------------------------------------------------------------
 
-	public function save( Request $request )
+	public function save( SavePaperRequest $request )
 		{
+
+		$path = request()->file( 'file' )->store( 'safe-papers', 's3' );
 
 		$category_exists = Category::where( 'name', $request->input( 'category' ) )->count();
 
@@ -52,8 +56,6 @@ class PaperController extends Controller
 				] );
 
 			}
-
-		$path = request()->file( 'file' )->store( 'safe-papers', 's3' );
 
 		$category = Category::select( 'id' )->where( 'name', $request->input( 'category' ) )->first();
 
@@ -80,7 +82,42 @@ class PaperController extends Controller
 
 		Paper::find( $_GET[ 'id' ] )->delete();
 
+		// Delete file on S3
+
 		return $_GET[ 'id' ];
+
+		}
+
+    // ------------------------------------------------------------
+
+	public function show_update( $id )
+		{
+
+        $page = 'update_paper';
+        $categories = Category::select( 'name' )->where( 'user_id', Auth::user()->id )->get()->toArray();
+        $paper = Paper::where( 'user_id', Auth::user()->id )->where( 'id', $id )->first();
+
+        JavaScript::put( [ 'categories' => array_flatten( $categories ) ] );
+
+        return view( 'papers.update_new_paper', compact( 'page', 'paper' ) );
+
+		}
+
+    // ------------------------------------------------------------
+
+	public function update( UpdatePaperRequest $request )
+		{
+
+		$category = Category::where( 'name', $request->input( 'category' ) )->first();
+
+		$paper = Paper::findOrFail( $request->input( 'paper_id' ) );
+		$paper->description = $request->input( 'description' );
+		$paper->category_id = $category->id;
+		$paper->update();
+
+		flash( 'Opération effectuée avec succès !', 'success' );
+
+		return redirect()->route( 'home' );
 
 		}
 

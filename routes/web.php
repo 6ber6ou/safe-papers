@@ -40,3 +40,5 @@ Route::get( '/', [ 'as' => 'home', 'uses' => 'HomeController@index' ] );
 Route::get( '/ajouter/nouveau-papier', [ 'as' => 'add_new_paper', 'uses' => 'PaperController@add' ] );
 Route::post( '/sauvegarder/nouveau-papier', [ 'as' => 'save_new_paper', 'uses' => 'PaperController@save' ] );
 Route::get( '/effacer/papier', [ 'as' => 'delete_paper', 'uses' => 'PaperController@delete' ] );
+Route::get( '/modifier/papier/{id}', [ 'as' => 'update_paper', 'uses' => 'PaperController@show_update' ] );
+Route::post( '/modifier/papier', [ 'as' => 'post_update_paper', 'uses' => 'PaperController@update' ] );
