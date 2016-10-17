@@ -155,28 +155,6 @@ $( document ).ready( function()
 
 		} );
 
-	// ------------------------------------------------------------
-
-	$( '.delete_yes' ).on( 'click', function()
-		{
-
-		$.ajax(
-			{
-
-			url : '/effacer/papier',
-			type : 'get',
-			data : { id : $( this ).data( 'id' ) },
-			success : function( data )
-				{
-
-				$( '#paragraph_' + data ).hide();
-
-				}
-
-			} );
-
-		} );
-
 	} );
 
 // *****************

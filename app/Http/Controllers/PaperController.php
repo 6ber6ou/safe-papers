@@ -77,14 +77,16 @@ class PaperController extends Controller
 
     // ------------------------------------------------------------
 
-	public function delete()
+	public function delete( $id )
 		{
 
-		Paper::find( $_GET[ 'id' ] )->delete();
+		Paper::find( $id )->delete();
 
 		// Delete file on S3
 
-		return $_GET[ 'id' ];
+		flash( 'Opération effectuée avec succès !', 'success' );
+
+		return redirect()->route( 'home' );
 
 		}
 

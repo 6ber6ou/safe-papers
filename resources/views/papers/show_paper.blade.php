@@ -25,11 +25,17 @@
         <!-- COL MD 12 -->
         <div class="col-md-12 text-center" style="margin-bottom : 30px;">
 
-            <a type="button" class="btn btn-default" href="{{ route( 'home' ) }}">Retour</a>
-            &nbsp; <a href="{{ route( 'update_paper', $paper->id ) }}" class="btn btn-primary edit">Modifier</a>
-            &nbsp; <button type="button" class="btn btn-danger btn-xs delete"><span class="fa fa-close"></span></button>
-            &nbsp; <button type="button" class="btn btn-info btn-xs delete_no hidden">Non</button>
-            &nbsp; <button type="button" data-id="{{ $paper->id }}" class="btn btn-danger btn-xs delete_yes hidden">Oui</button>
+            <form action="{{ route( 'delete_paper', $paper->id ) }}" method="POST">
+
+                {{ csrf_field() }}
+
+                <a type="button" class="btn btn-default" href="{{ route( 'home' ) }}">Retour</a>
+                &nbsp; <a href="{{ route( 'update_paper', $paper->id ) }}" class="btn btn-primary edit">Modifier</a>
+                &nbsp; <button type="button" class="btn btn-danger delete">Supprimer</button>
+                &nbsp; <button type="button" class="btn btn-info delete_no hidden">Non</button>
+                &nbsp; <button type="submit" class="btn btn-danger delete_yes hidden">Oui</button>
+
+            </form>
 
         </div>
         <!-- End ... COL MD 12 -->
