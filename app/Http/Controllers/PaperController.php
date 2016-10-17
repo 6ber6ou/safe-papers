@@ -117,7 +117,7 @@ class PaperController extends Controller
 
 		flash( 'Opération effectuée avec succès !', 'success' );
 
-		return redirect()->route( 'home' );
+		return redirect()->route( 'show_paper', $request->input( 'paper_id' ) );
 
 		}
 
@@ -128,6 +128,8 @@ class PaperController extends Controller
 
 		$page = 'show_paper';
 		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
+		$paper->consulted_at = date( 'Y-m-d H:i:s' );
+		$paper->update();
 
         return view( 'papers.show_paper', compact( 'page', 'paper' ) );
 
