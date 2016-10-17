@@ -13,10 +13,8 @@
 			<!-- PARAGARPH -->
 			<p id="paragraph_{{ $paper->id }}">
 
-				<a href="#">{{ $paper->description }}</a>
-				{{-- <img src="https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ $paper->path }}" alt="Document"> --}}
-				<br>
-				( {{ $paper->category->name }} )
+				<a href="{{ route( 'show_paper', $paper->id ) }}">{{ $paper->description }}</a>
+				&nbsp; <span class="label label-info">{{ $paper->category->name }}</span>
 				<br>
 				&nbsp; <a href="{{ route( 'update_paper', $paper->id ) }}" class="btn btn-primary btn-xs edit"><span class="fa fa-pencil"></span></a>
 				&nbsp; <button type="button" class="btn btn-danger btn-xs delete"><span class="fa fa-close"></span></button>

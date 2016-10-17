@@ -121,4 +121,16 @@ class PaperController extends Controller
 
 		}
 
+    // ------------------------------------------------------------
+
+	public function show( $id )
+		{
+
+		$page = 'show_paper';
+		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
+
+        return view( 'papers.show_paper', compact( 'page', 'paper' ) );
+
+		}
+
 	}
