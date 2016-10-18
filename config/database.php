@@ -68,8 +68,8 @@ return
             'charset'       =>      'utf8',
             'collation'     =>      'utf8_unicode_ci',
             'prefix'        =>      '',
-            'strict'        => TRUE,
-            'engine'        => NULL
+            'strict'        =>      TRUE,
+            'engine'        =>      NULL
 
             ],
         'pgsql'         =>

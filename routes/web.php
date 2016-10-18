@@ -43,3 +43,11 @@ Route::post( '/effacer/papier/{id}', [ 'as' => 'delete_paper', 'uses' => 'PaperC
 Route::get( '/modifier/papier/{id}', [ 'as' => 'update_paper', 'uses' => 'PaperController@show_update' ] );
 Route::post( '/modifier/papier', [ 'as' => 'post_update_paper', 'uses' => 'PaperController@update' ] );
 Route::get( '/Afficher/papier/{id}', [ 'as' => 'show_paper', 'uses' => 'PaperController@show' ] );
+
+// ------------------------------------------------------------
+
+// ******
+// SEARCH
+// ******
+
+Route::get( '/categorie/{name}', [ 'as' => 'search_by_category', 'uses' => 'CategoriesController@search' ] );

@@ -32,26 +32,21 @@
 	<!-- End ... COL MD 6 -->
 
 	<!-- COL MD 6 -->
-	<div class="col-md-6" style="margin-top : 30px;">
+	<div class="col-md-6 text-center" style="margin-top : 30px;">
 
-		<h3 class="text-center">
-			Derniers papiers consultés
+		<h3>
+			Recherche par catégorie
 		</h3>
 
-		@foreach( $latest_viewed_papers as $viewed_paper )
+		<h4 style="line-height: 30px;">
 
-			<!-- PARAGARPH -->
-			<p id="paragraph_{{ $viewed_paper->id }}">
+			@foreach( $categories as $category )
 
-				<a href="{{ route( 'show_paper', $viewed_paper->id ) }}">{{ $viewed_paper->description }}</a>
-				&nbsp; <span class="label label-info">{{ $viewed_paper->category->name }}</span>
-				<br>
-				{{ Jenssegers\Date\Date::parse( $viewed_paper->consulted_at )->diffForHumans() }}
+				<a href="{{ route( 'search_by_category', str_slug( $category->name ) ) }}" style="text-decoration : none;"><span class="label label-info">{{ $category->name }} &nbsp;</span></a>
 
-			</p>
-			<!-- End ... PARAGARPH -->
+			@endforeach
 
-		@endforeach
+		</h4>
 
 	</div>
 	<!-- End ... COL MD 6 -->

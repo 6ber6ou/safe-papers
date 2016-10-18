@@ -50,7 +50,8 @@ class PaperController extends Controller
 			Category::create(
 				[
 
-				'name' => ucfirst( strtolower( $request->input( 'category' ) ) ),
+				'name' => ucfirst( $request->input( 'category' ) ),
+				'slug' => str_slug( $request->input( 'category' ) ),
 				'user_id' => Auth::user()->id
 
 				] );
@@ -111,6 +112,20 @@ class PaperController extends Controller
 		{
 
 		$category = Category::where( 'name', $request->input( 'category' ) )->first();
+
+		if( $category == NULL )
+			{
+
+			$category = Category::create(
+				[
+
+				'name' => ucfirst( $request->input( 'category' ) ),
+				'slug' => str_slug( $request->input( 'category' ) ),
+				'user_id' => Auth::user()->id
+
+				] );
+
+			}
 
 		$paper = Paper::findOrFail( $request->input( 'paper_id' ) );
 		$paper->description = $request->input( 'description' );
