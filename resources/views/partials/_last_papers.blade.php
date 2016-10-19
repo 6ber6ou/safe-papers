@@ -37,7 +37,11 @@
 
 			@foreach( $categories as $category )
 
-				<a href="{{ route( 'search_by_category', str_slug( $category->name ) ) }}" style="text-decoration : none;"><span class="label label-info">{{ $category->name }} &nbsp;</span></a>
+				@if( App\Paper::where( 'user_id', Auth::user()->id )->where( 'category_id', $category->id )->first() )
+
+					<a href="{{ route( 'search_by_category', str_slug( $category->name ) ) }}" style="text-decoration : none;"><span class="label label-info">{{ $category->name }} &nbsp;</span></a>
+
+				@endif
 
 			@endforeach
 

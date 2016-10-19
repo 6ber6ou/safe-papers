@@ -111,7 +111,9 @@ class PaperController extends Controller
 	public function update( UpdatePaperRequest $request )
 		{
 
-		$category = Category::where( 'name', $request->input( 'category' ) )->first();
+		$category = Category::where( 'name', $request->input( 'category' ) )
+							->where( 'user_id', Auth::user()->id )
+							->first();
 
 		if( $category == NULL )
 			{
