@@ -14,7 +14,8 @@
 			<p id="paragraph_{{ $paper->id }}">
 
 				<a href="{{ route( 'show_paper', $paper->id ) }}">{{ $paper->description }}</a>
-				&nbsp; <span class="label label-info">{{ $paper->category->name }}</span>
+				<br>
+				<a href="{{ route( 'search_by_category', str_slug( $paper->category->name ) ) }}" style="text-decoration : none;"><span class="label label-info"><span class="fa fa-folder"></span> &nbsp;{{ $paper->category->name }}</span></a>
 				<br>
 				{{ Jenssegers\Date\Date::parse( $paper->created_at )->diffForHumans() }}
 
@@ -29,23 +30,7 @@
 	<!-- COL MD 6 -->
 	<div class="col-md-6 text-center" style="margin-top : 30px;">
 
-		<h3>
-			Recherche par catégorie
-		</h3>
-
-		<h4 style="line-height: 30px;">
-
-			@foreach( $categories as $category )
-
-				@if( App\Paper::where( 'user_id', Auth::user()->id )->where( 'category_id', $category->id )->first() )
-
-					<a href="{{ route( 'search_by_category', str_slug( $category->name ) ) }}" style="text-decoration : none;"><span class="label label-info">{{ $category->name }} &nbsp;</span></a>
-
-				@endif
-
-			@endforeach
-
-		</h4>
+		@include( 'partials._search_by_category' )
 
 	</div>
 	<!-- End ... COL MD 6 -->

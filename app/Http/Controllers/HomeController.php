@@ -24,6 +24,7 @@ class HomeController extends Controller
         {
 
         $page = 'home';
+        $name = '';
 
         if( Auth::check() )
             {
@@ -33,7 +34,7 @@ class HomeController extends Controller
 
             JavaScript::put( [ 'categories' => array_flatten( $categories->toArray() ) ] );
 
-            return view( 'home', compact( 'page', 'latest_papers', 'categories' ) );
+            return view( 'home', compact( 'page', 'latest_papers', 'categories', 'name' ) );
 
             }
 

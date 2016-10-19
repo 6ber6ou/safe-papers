@@ -14,7 +14,7 @@
         <!-- COL MD 12 -->
 		<div class="col-md-12 text-center" style="margin-bottom : 30px;">
 
-            {{ $paper->description }} &nbsp;<span class="label label-info">{{ $paper->category->name }}</span>
+            {{ $paper->description }} &nbsp;<span class="label label-info"><a href="{{ route( 'search_by_category', $paper->category->slug ) }}" style="text-decoration : none; color : white;"><span class="fa fa-folder"></span> &nbsp;{{ $paper->category->name }}</span></a>
             <br>
             <br>
             <img src="https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ $paper->path }}" class="img-responsive" alt="Document">
