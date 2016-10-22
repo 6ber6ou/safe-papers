@@ -101,7 +101,9 @@
         <!-- Scripts -->
         <script src="{{ asset( '/js/all.js' ) }}"></script>
 
-        @yield( 'footer' )
+        @yield( 'scripts.footer' )
+
+        @include( 'layouts.footer' )
 
     </body>
 
