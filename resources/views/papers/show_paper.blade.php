@@ -35,7 +35,7 @@
                 &nbsp; <a href="{{ route( 'update_paper', $paper->id ) }}" class="btn btn-primary edit">Modifier</a>
                 &nbsp; <button type="button" class="btn btn-danger delete">Supprimer</button>
                 &nbsp; <button type="button" class="btn btn-info delete_no hidden">Non</button>
-                &nbsp; <button type="submit" class="btn btn-danger delete_yes hidden">Oui</button>
+                &nbsp; <button type="submit" class="btn btn-danger delete_yes hidden spinner" data-style="zoom-in">Oui</button>
 
             </form>
             <!-- End ... FORM -->

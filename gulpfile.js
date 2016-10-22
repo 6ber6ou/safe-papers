@@ -15,7 +15,8 @@ elixir( mix =>
 
     	'./public/css/app.css',
         './public/css/style.css',
-        'font-awesome.css'
+        'font-awesome.css',
+        'ladda-button/ladda-themeless.min.css'
 
     	], 'public/css/all.css' );
 
@@ -30,6 +31,9 @@ elixir( mix =>
 
         'jquery/jquery.js',
         'bootstrap/bootstrap.js',
+        'ladda-button/spin.min.js',
+        'ladda-button/ladda.min.js',
+        'init_ladda-button.js',
         'ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js',
         'fuzzy-autocomplete/fuzzy-autocomplete.js',
         'delete_paper.js',
