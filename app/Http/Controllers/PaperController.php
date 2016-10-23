@@ -60,7 +60,7 @@ class PaperController extends Controller
 
 		$category = Category::select( 'id' )->where( 'name', $request->input( 'category' ) )->first();
 
-		Paper::create(
+		$new_paper = Paper::create(
 			[
 
 			'description' => $request->input( 'description' ),
@@ -72,7 +72,7 @@ class PaperController extends Controller
 
 		flash( 'Opération effectuée avec succès !', 'success' );
 
-		return back();
+		return redirect()->route( 'show_paper', $new_paper->id );
 
 		}
 
