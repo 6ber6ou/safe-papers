@@ -8,8 +8,8 @@ use App\Http\Requests\SavePaperRequest;
 use App\Http\Requests\UpdatePaperRequest;
 use App\Paper;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 use JavaScript;
-use Storage;
 
 class PaperController extends Controller
 	{
@@ -92,9 +92,10 @@ class PaperController extends Controller
 
 			}
 
-		$paper->delete();
-
 		// Delete file on S3
+		Storage::disk( 's3' )->delete( $paper->path );
+
+		$paper->delete();
 
 		flash( 'Opération effectuée avec succès !', 'success' );
 
