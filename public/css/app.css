@@ -5886,6 +5886,9 @@ body {
 .alert {
   text-align: center; }
 
+.label a {
+  cursoir: pointer !important; }
+
 /* Footer */
 /* ****** */
 /* FOOTER */

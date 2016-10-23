@@ -16,7 +16,8 @@ elixir( mix =>
     	'./public/css/app.css',
         './public/css/style.css',
         'font-awesome.css',
-        'ladda-button/ladda-themeless.min.css'
+        'ladda-button/ladda-themeless.min.css',
+        'image-viewer/imageviewer.css'
 
     	], 'public/css/all.css' );
 
@@ -34,6 +35,8 @@ elixir( mix =>
         'ladda-button/spin.min.js',
         'ladda-button/ladda.min.js',
         'init_ladda-button.js',
+        'image-viewer/imageviewer.js',
+        'init_imageviewer.js',
         'ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js',
         'fuzzy-autocomplete/fuzzy-autocomplete.js',
         'delete_paper.js',
