@@ -28,9 +28,6 @@ class PaperController extends Controller
 		{
 
         $page = 'add_paper';
-        $categories = Category::select( 'name' )->where( 'user_id', Auth::user()->id )->get();
-
-        JavaScript::put( [ 'categories' => array_flatten( $categories->toArray() ) ] );
 
         return view( 'papers.add_new_paper', compact( 'page' ) );
 

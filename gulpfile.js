@@ -38,9 +38,7 @@ elixir( mix =>
         'image-viewer/imageviewer.js',
         'init_imageviewer.js',
         'ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js',
-        'fuzzy-autocomplete/fuzzy-autocomplete.js',
-        'delete_paper.js',
-        'init_fuzzy-autocomplete.js'
+        'delete_paper.js'
 
         ], 'public/js/all.js' );
 
