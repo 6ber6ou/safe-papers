@@ -81,7 +81,18 @@ class PaperController extends Controller
 	public function delete( $id )
 		{
 
-		Paper::find( $id )->delete();
+		// Delete Category if empty
+		$paper = Paper::find( $id )->where( 'user_id', Auth::user()->id )->first();
+		$paper_count = Paper::where( 'user_id', Auth::user()->id )->count();
+
+		if( $paper_count == 1 )
+			{
+
+			$paper->category->delete();
+
+			}
+
+		$paper->delete();
 
 		// Delete file on S3
 

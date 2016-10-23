@@ -113,10 +113,6 @@
 
                         &nbsp;&nbsp;
 
-{{--                         <button type="submit" class="btn btn-primary">
-                            Ajouter
-                        </button> --}}
-
                         <button class="ladda-button btn btn-primary spinner" data-style="zoom-in">
                             Ajouter
                         </button>
