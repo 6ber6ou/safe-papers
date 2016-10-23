@@ -24,6 +24,16 @@
         <!-- End ... COL MD 12 -->
 
         <!-- COL MD 12 -->
+        <div class="col-md-12 text-center" id="image_container">
+
+            <p>
+                Zoomer sur la photo avec le bouton milieu (ou molette) de la souris, et déplacer la photo avec le bouton gauche de la souris.
+            </p>
+
+        </div>
+        <!-- End ... COL MD 12 -->
+
+        <!-- COL MD 12 -->
         <div class="col-md-12 text-center" style="margin-bottom : 30px;">
 
             <!-- FORM -->

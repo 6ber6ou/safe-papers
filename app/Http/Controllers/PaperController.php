@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePaperRequest;
 use App\Paper;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use Image;
 use JavaScript;
 
 class PaperController extends Controller
@@ -40,7 +41,21 @@ class PaperController extends Controller
 	public function save( SavePaperRequest $request )
 		{
 
-		$path = request()->file( 'file' )->store( 'safe-papers', 's3' );
+		$image = request()->file( 'file' );
+
+		$image = Image::make( $image )->widen( 1500, function( $constraint )
+			{
+
+			$constraint->upsize();
+
+			} )->stream();
+
+		$image = $image->__toString();
+
+		$file_name = uniqId() . '.jpg';
+
+		$s3 = Storage::disk( 's3' );
+		$s3->put( '/safe-papers/' . $file_name, $image, 'public' );
 
 		$category_exists = Category::where( 'name', $request->input( 'category' ) )->count();
 
@@ -64,7 +79,7 @@ class PaperController extends Controller
 			[
 
 			'description' => $request->input( 'description' ),
-			'path' => $path,
+			'path' => 'safe-papers/' . $file_name,
 			'user_id' => Auth::user()->id,
 			'category_id' => $category->id
 
@@ -109,10 +124,7 @@ class PaperController extends Controller
 		{
 
         $page = 'update_paper';
-        $categories = Category::select( 'name' )->where( 'user_id', Auth::user()->id )->get()->toArray();
         $paper = Paper::where( 'user_id', Auth::user()->id )->where( 'id', $id )->first();
-
-        JavaScript::put( [ 'categories' => array_flatten( $categories ) ] );
 
         return view( 'papers.update_new_paper', compact( 'page', 'paper' ) );
 
