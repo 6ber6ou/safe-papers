@@ -59,11 +59,6 @@
 
                         <input id="category" type="text" class="form-control" name="category" value="{{ old( 'category' ) }}" required autocomplete="off">
 
-                        {{ csrf_field() }}
-
-                        <div id="categoryList">
-                        </div>
-
                         <!-- ERROR -->
                         @if( $errors->has( 'category' ) )
 
@@ -139,5 +134,32 @@
 
 @stop
 
+<!-- ============================================================ -->
+
+@section( 'scripts.footer' )
+
+    <script>
+
+        // ***********************
+        // AUTOCOMPLETE CATEGORIES
+        // ***********************
+
+        var cat = categories;
+
+        $( document ).ready( function()
+            {
+
+            $( '#category' ).autocomplete(
+                {
+
+                source : cat
+
+                } );
+
+            } );
+
+    </script>
+
+@stop
 
 

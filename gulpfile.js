@@ -17,7 +17,8 @@ elixir( mix =>
         './public/css/style.css',
         'font-awesome.css',
         'ladda-button/ladda-themeless.min.css',
-        'image-viewer/imageviewer.css'
+        'image-viewer/imageviewer.css',
+        'jquery-ui/jquery-ui.css'
 
     	], 'public/css/all.css' );
 
@@ -31,8 +32,8 @@ elixir( mix =>
         [
 
         'jquery/jquery.js',
+        'jquery-ui/jquery-ui.js',
         'bootstrap/bootstrap.js',
-        'autocomplete.js',
         'ladda-button/spin.min.js',
         'ladda-button/ladda.min.js',
         'init_ladda-button.js',
