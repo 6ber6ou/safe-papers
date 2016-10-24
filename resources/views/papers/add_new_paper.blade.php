@@ -118,7 +118,7 @@
 
                         &nbsp;&nbsp;
 
-                        <button class="ladda-button btn btn-primary spinner" data-style="zoom-in">
+                        <button class="ladda-button btn btn-primary spinner" id="add_paper" data-style="zoom-in">
                             Ajouter
                         </button>
 

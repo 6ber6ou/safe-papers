@@ -8,28 +8,19 @@ $( document ).ready( function()
 	Ladda.bind( '.spinner',
 		{
 
-		// callback : function ( instance )
-		// 	{
+		callback : function ( instance )
+			{
 
-		// 	var progress = 0;
+			$( 'button, a' ).not( '.spinner' ).attr( 'disabled', 'disabled' );
 
-		// 	var interval = setInterval( function()
-		// 		{
+			$( 'button, a' ).not( '.spinner' ).on( 'click', function( e )
+				{
 
-		// 		progress = Math.min( progress + Math.random() * 0.1, 1 );
-		// 		instance.setProgress( progress );
+				e.preventDefault();
 
-		// 		if( progress === 1 )
-		// 			{
+				} );
 
-		// 			instance.stop();
-		// 			clearInterval( interval );
-
-		// 			}
-
-		// 		}, 200 );
-
-		// 	}
+			}
 
 		} );
 
