@@ -22,4 +22,40 @@ class CategoriesController extends Controller
 
 		}
 
+	// ----------
+
+	public function search_autocomplete()
+		{
+
+		if( isset( $_POST[ 'query' ] ) )
+			{
+
+			$output = '';
+
+			$query = Category::where( 'user_id', Auth::user()->id )
+							->where( 'name', 'LIKE', '%' . $_POST[ 'query' ] . '%' )
+							->get();
+
+			$output = '<ul class="list-unstyled">';
+
+			if( $query->count() > 0 )
+				{
+
+				foreach( $query as $q )
+					{
+
+					$output .= '<li>' . $q->name . '</li>';
+
+					}
+
+				}
+
+			$output .= '</ul>';
+
+			echo $output;
+
+			}
+
+		}
+
 	}

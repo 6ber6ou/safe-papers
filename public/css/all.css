@@ -5872,12 +5872,26 @@ body {
 /* ************ */
 /* AUTOCOMPLETE */
 /* ************ */
-.fuzzy-autocomplete-result {
+#category {
+  position: relative; }
+
+#categoryList {
   border-radius: 5px;
-  margin-top: 10px;
-  width: 90% !important; }
-  .fuzzy-autocomplete-result p {
-    width: 100% !important; }
+  background: white;
+  border: 1px solid #ccd0d2;
+  position: absolute;
+  top: 40px;
+  left: 15px;
+  width: 90%;
+  z-index: 9999; }
+  #categoryList li {
+    padding: 0 10px;
+    cursor: pointer !important; }
+    #categoryList li:hover {
+      background: #3097d1;
+      color: white; }
+  #categoryList .list-unstyled {
+    margin-top: 11px; }
 
 /* Class */
 /* ***** */

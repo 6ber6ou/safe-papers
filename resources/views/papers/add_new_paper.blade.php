@@ -59,6 +59,11 @@
 
                         <input id="category" type="text" class="form-control" name="category" value="{{ old( 'category' ) }}" required autocomplete="off">
 
+                        {{ csrf_field() }}
+
+                        <div id="categoryList">
+                        </div>
+
                         <!-- ERROR -->
                         @if( $errors->has( 'category' ) )
 

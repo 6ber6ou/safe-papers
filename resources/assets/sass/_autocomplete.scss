@@ -2,15 +2,35 @@
 /* AUTOCOMPLETE */
 /* ************ */
 
-.fuzzy-autocomplete-result
+#category
+	{
+	position : relative;
+	}
+
+#categoryList
 	{
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	margin-top : 10px;
-	width : 90% !important;
-	p
+	background : white;
+	border : 1px solid #ccd0d2;
+	position : absolute;
+	top : 40px;
+	left : 15px;
+	width : 90%;
+	z-index : 9999;
+	li
 		{
-		width : 100% !important;
+		padding : 0 10px;
+		cursor : pointer !important;
+		&:hover
+			{
+			background : $primary;
+			color : white;
+			}
+		}
+	.list-unstyled
+		{
+		margin-top : 11px;
 		}
 	}

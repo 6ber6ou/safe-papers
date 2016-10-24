@@ -32,6 +32,7 @@ elixir( mix =>
 
         'jquery/jquery.js',
         'bootstrap/bootstrap.js',
+        'autocomplete.js',
         'ladda-button/spin.min.js',
         'ladda-button/ladda.min.js',
         'init_ladda-button.js',

@@ -51,3 +51,8 @@ Route::get( '/Afficher/papier/{id}', [ 'as' => 'show_paper', 'uses' => 'PaperCon
 // ******
 
 Route::get( '/categorie/{name}', [ 'as' => 'search_by_category', 'uses' => 'CategoriesController@search' ] );
+Route::post( '/search/autocomplete', 'CategoriesController@search_autocomplete' );
+
+
+
+
