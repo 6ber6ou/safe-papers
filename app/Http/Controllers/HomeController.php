@@ -29,7 +29,7 @@ class HomeController extends Controller
         if( Auth::check() )
             {
 
-            $latest_papers = Paper::where( 'user_id', Auth::user()->id )->take( 10 )->orderBy( 'id', 'desc' )->get();
+            $latest_papers = Paper::where( 'user_id', Auth::user()->id )->take( 5 )->orderBy( 'id', 'desc' )->get();
             $categories = Category::where( 'user_id', Auth::user()->id )->orderBy( 'name', 'ASC' )->get();
 
             JavaScript::put( [ 'categories' => array_flatten( $categories->toArray() ) ] );

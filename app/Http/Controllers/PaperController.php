@@ -88,7 +88,7 @@ class PaperController extends Controller
 
 		flash( 'Opération effectuée avec succès !', 'success' );
 
-		return redirect()->route( 'show_paper', $new_paper->id );
+		return $new_paper->id;
 
 		}
 

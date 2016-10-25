@@ -34,6 +34,8 @@ elixir( mix =>
         'jquery/jquery.js',
         'jquery-ui/jquery-ui.js',
         'bootstrap/bootstrap.js',
+        'upload-image/jquery.form.js',
+        'upload-image/upload_image.js',
         'ladda-button/spin.min.js',
         'ladda-button/ladda.min.js',
         'init_ladda-button.js',

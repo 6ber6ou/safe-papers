@@ -42,7 +42,7 @@ Route::post( '/sauvegarder/nouveau-papier', [ 'as' => 'save_new_paper', 'uses' =
 Route::post( '/effacer/papier/{id}', [ 'as' => 'delete_paper', 'uses' => 'PaperController@delete' ] );
 Route::get( '/modifier/papier/{id}', [ 'as' => 'update_paper', 'uses' => 'PaperController@show_update' ] );
 Route::post( '/modifier/papier', [ 'as' => 'post_update_paper', 'uses' => 'PaperController@update' ] );
-Route::get( '/Afficher/papier/{id}', [ 'as' => 'show_paper', 'uses' => 'PaperController@show' ] );
+Route::get( '/afficher/papier/{id}', [ 'as' => 'show_paper', 'uses' => 'PaperController@show' ] );
 
 // ------------------------------------------------------------
 
