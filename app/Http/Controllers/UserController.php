@@ -14,7 +14,7 @@ class UserController extends Controller
 
         $page = 'user_profile';
 
-        return view( 'users.profile', compact( 'page' ) );
+        return view( 'users.profil', compact( 'page' ) );
 
 		}
 

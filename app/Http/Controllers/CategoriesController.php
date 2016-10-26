@@ -16,7 +16,7 @@ class CategoriesController extends Controller
 		$page = 'search_by_category';
 		$category = Category::where( 'slug', str_slug( $name ) )->first();
 		$categories = Category::where( 'user_id', Auth::user()->id )->get();
-		$papers = Paper::where( 'category_id', $category->id )->where( 'user_id', Auth::user()->id )->get();
+		$papers = Paper::where( 'category_id', $category->id )->where( 'user_id', Auth::user()->id )->paginate( 10 );
 
 		return view( 'search.category', compact( 'page', 'papers', 'category', 'categories', 'name' ) );
 

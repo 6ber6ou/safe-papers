@@ -10,136 +10,124 @@
         <!-- COL MD 8 -->
         <div class="col-md-8 col-md-offset-2">
 
-            <!-- PANEL -->
-            <div class="panel panel-default">
+            <!-- TITLE -->
+            <h3>
+                Réinitialiser votre mot de passe
+            </h3>
 
-                <!-- PANEL HEADING -->
-                <div class="panel-heading">
-                    Réinitialiser votre mot de passe
+            <!-- SUCCESS MESSAGE -->
+            @if (session('status'))
+
+                <div class="alert alert-success">
+                    {{ session( 'status' ) }}
                 </div>
 
-                <!-- PANEL BODY -->
-                <div class="panel-body">
+            @endif
+            <!-- SUCCESS MESSAGE -->
 
-                    <!-- SUCCESS MESSAGE -->
-                    @if (session('status'))
+            <!-- FORM -->
+            <form class="form-horizontal" role="form" method="POST" action="{{ route( 'post_initialize_password' ) }}">
 
-                        <div class="alert alert-success">
-                            {{ session( 'status' ) }}
-                        </div>
+                {{ csrf_field() }}
 
-                    @endif
-                    <!-- SUCCESS MESSAGE -->
+                <input type="hidden" name="token" value="{{ $token }}">
 
-                    <!-- FORM -->
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route( 'post_initialize_password' ) }}">
+                <!-- FORM GROUP -->
+                <div class="form-group{{ $errors->has( 'email' ) ? ' has-error' : '' }}">
 
-                        {{ csrf_field() }}
+                    <label for="email" class="col-md-4 control-label">E-Mail</label>
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+                    <!-- COL MD 6 -->
+                    <div class="col-md-6">
 
-                        <!-- FORM GROUP -->
-                        <div class="form-group{{ $errors->has( 'email' ) ? ' has-error' : '' }}">
+                        <input id="email" type="email" class="form-control" name="email" value="{{ $email or old( 'email' ) }}" required autofocus>
 
-                            <label for="email" class="col-md-4 control-label">E-Mail</label>
+                        <!-- ERROR -->
+                        @if( $errors->has( 'email' ) )
 
-                            <!-- COL MD 6 -->
-                            <div class="col-md-6">
+                            <span class="help-block">
+                                <strong>{{ $errors->first( 'email' ) }}</strong>
+                            </span>
 
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old( 'email' ) }}" required autofocus>
+                        @endif
+                        <!-- End ... ERROR -->
 
-                                <!-- ERROR -->
-                                @if( $errors->has( 'email' ) )
-
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first( 'email' ) }}</strong>
-                                    </span>
-
-                                @endif
-                                <!-- End ... ERROR -->
-
-                            </div>
-                            <!-- End ... COL MD 6 -->
-
-                        </div>
-                        <!-- End ... FORM GROUP -->
-
-                        <!-- FORM GROUP -->
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-
-                            <label for="password" class="col-md-4 control-label">Mot de passe</label>
-
-                            <!-- COL MD 6 -->
-                            <div class="col-md-6">
-
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                <!-- ERROR -->
-                                @if( $errors->has( 'password' ) )
-
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first( 'password' ) }}</strong>
-                                    </span>
-
-                                @endif
-                                <!-- End ... ERROR -->
-
-                            </div>
-                            <!-- End ... COL MD 6 -->
-
-                        </div>
-                        <!-- End ... FORM GROUP -->
-
-                        <!-- FORM GROUP -->
-                        <div class="form-group{{ $errors->has( 'password_confirmation' ) ? ' has-error' : '' }}">
-
-                            <label for="password-confirm" class="col-md-4 control-label">Confirmez votre mot de passe</label>
-
-                            <!-- COL MD 6 -->
-                            <div class="col-md-6">
-
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-
-                                <!-- ERROR -->
-                                @if( $errors->has( 'password_confirmation' ) )
-
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first( 'password_confirmation' ) }}</strong>
-                                    </span>
-
-                                @endif
-                                <!-- End ... ERROR -->
-
-                            </div>
-                            <!-- End ... COL MD 6 -->
-
-                        </div>
-                        <!-- End ... FORM GROUP -->
-
-                        <!-- FORM GROUP -->
-                        <div class="form-group">
-
-                            <!-- COL MD 6 -->
-                            <div class="col-md-6 col-md-offset-4">
-
-                                <button type="submit" class="btn btn-primary">
-                                    Réinitialiser votre mot de passe
-                                </button>
-
-                            </div>
-                            <!-- End ... COL MD 6 -->
-
-                        </div>
-                        <!-- End ... FORM GROUP -->
-
-                    </form>
-                    <!-- End ... FORM -->
+                    </div>
+                    <!-- End ... COL MD 6 -->
 
                 </div>
-                <!-- End ... PANEL BODY -->
+                <!-- End ... FORM GROUP -->
 
-            </div>
-            <!-- End ... PANEL -->
+                <!-- FORM GROUP -->
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                    <label for="password" class="col-md-4 control-label">Mot de passe</label>
+
+                    <!-- COL MD 6 -->
+                    <div class="col-md-6">
+
+                        <input id="password" type="password" class="form-control" name="password" required>
+
+                        <!-- ERROR -->
+                        @if( $errors->has( 'password' ) )
+
+                            <span class="help-block">
+                                <strong>{{ $errors->first( 'password' ) }}</strong>
+                            </span>
+
+                        @endif
+                        <!-- End ... ERROR -->
+
+                    </div>
+                    <!-- End ... COL MD 6 -->
+
+                </div>
+                <!-- End ... FORM GROUP -->
+
+                <!-- FORM GROUP -->
+                <div class="form-group{{ $errors->has( 'password_confirmation' ) ? ' has-error' : '' }}">
+
+                    <label for="password-confirm" class="col-md-4 control-label">Confirmez votre mot de passe</label>
+
+                    <!-- COL MD 6 -->
+                    <div class="col-md-6">
+
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+
+                        <!-- ERROR -->
+                        @if( $errors->has( 'password_confirmation' ) )
+
+                            <span class="help-block">
+                                <strong>{{ $errors->first( 'password_confirmation' ) }}</strong>
+                            </span>
+
+                        @endif
+                        <!-- End ... ERROR -->
+
+                    </div>
+                    <!-- End ... COL MD 6 -->
+
+                </div>
+                <!-- End ... FORM GROUP -->
+
+                <!-- FORM GROUP -->
+                <div class="form-group">
+
+                    <!-- COL MD 6 -->
+                    <div class="col-md-6 col-md-offset-4">
+
+                        <button type="submit" class="btn btn-primary">
+                            Réinitialiser votre mot de passe
+                        </button>
+
+                    </div>
+                    <!-- End ... COL MD 6 -->
+
+                </div>
+                <!-- End ... FORM GROUP -->
+
+            </form>
+            <!-- End ... FORM -->
 
         </div>
         <!-- End ... COL MD 8 -->

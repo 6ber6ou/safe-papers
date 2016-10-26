@@ -11,82 +11,70 @@
         <!-- COL MD 8 -->
         <div class="col-md-8 col-md-offset-2">
 
-            <!-- PANEL -->
-            <div class="panel panel-default">
+            <!-- TITLE -->
+            <h3>
+                Réinitialiser votre mot de passe
+            </h3>
+            <!-- End ... TITLE -->
 
-                <!-- PANEL HEADING -->
-                <div class="panel-heading">
-                    Réinitialiser votre mot de passe
+            <!-- SUCCESS MESSAGE -->
+            @if (session('status'))
+
+                <div class="alert alert-success">
+                    {{ session( 'status' ) }}
                 </div>
-                <!-- End ... PANEL HEADING -->
 
-                <!-- PANEL BODY -->
-                <div class="panel-body">
+            @endif
+            <!-- SUCCESS MESSAGE -->
 
-                    <!-- SUCCESS MESSAGE -->
-                    @if (session('status'))
+            <!-- FORM -->
+            <form class="form-horizontal" role="form" method="POST" action="{{ route( 'post_password_reset' ) }}">
+                {{ csrf_field() }}
 
-                        <div class="alert alert-success">
-                            {{ session( 'status' ) }}
-                        </div>
+                <!-- FORM GROUP -->
+                <div class="form-group{{ $errors->has( 'email' ) ? ' has-error' : '' }}">
 
-                    @endif
-                    <!-- SUCCESS MESSAGE -->
+                    <label for="email" class="col-md-4 control-label">Adresse e-mail</label>
 
-                    <!-- FORM -->
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route( 'post_password_reset' ) }}">
-                        {{ csrf_field() }}
+                    <!-- COL MD 6 -->
+                    <div class="col-md-6">
 
-                        <!-- FORM GROUP -->
-                        <div class="form-group{{ $errors->has( 'email' ) ? ' has-error' : '' }}">
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old( 'email' ) }}" required>
 
-                            <label for="email" class="col-md-4 control-label">Adresse e-mail</label>
+                        <!-- ERROR -->
+                        @if ($errors->has('email'))
 
-                            <!-- COL MD 6 -->
-                            <div class="col-md-6">
+                            <span class="help-block">
+                                <strong>{{ $errors->first( 'email' ) }}</strong>
+                            </span>
 
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old( 'email' ) }}" required>
+                        @endif
+                        <!-- End ... ERROR -->
 
-                                <!-- ERROR -->
-                                @if ($errors->has('email'))
-
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first( 'email' ) }}</strong>
-                                    </span>
-
-                                @endif
-                                <!-- End ... ERROR -->
-
-                            </div>
-                            <!-- End ... COL MD 6 -->
-
-                        </div>
-                        <!-- End ... FORM GROUP -->
-
-                        <!-- FORM GROUP -->
-                        <div class="form-group">
-
-                            <!-- COL MD 6 -->
-                            <div class="col-md-6 col-md-offset-4">
-
-                                <button type="submit" class="btn btn-primary">
-                                    Envoyer un nouveau mot de passe
-                                </button>
-
-                            </div>
-                            <!-- End ... COL MD 6 -->
-
-                        </div>
-                        <!-- End ... FORM GROUP -->
-
-                    </form>
-                    <!-- End ... FORM -->
+                    </div>
+                    <!-- End ... COL MD 6 -->
 
                 </div>
-                <!-- End ... PANEL BODY -->
+                <!-- End ... FORM GROUP -->
 
-            </div>
-            <!-- End ... PANEL -->
+                <!-- FORM GROUP -->
+                <div class="form-group">
+
+                    <!-- COL MD 6 -->
+                    <div class="col-md-6 col-md-offset-4">
+
+                        <button type="submit" class="btn btn-primary">
+                            Envoyer un nouveau mot de passe
+                        </button>
+
+                    </div>
+                    <!-- End ... COL MD 6 -->
+
+                </div>
+                <!-- End ... FORM GROUP -->
+
+            </form>
+            <!-- End ... FORM -->
 
         </div>
         <!-- End ... COL MD 8 -->
