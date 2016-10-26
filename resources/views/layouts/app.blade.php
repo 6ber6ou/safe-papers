@@ -61,9 +61,26 @@
                                 <a href="{{ route( 'add_new_paper' ) }}">Ajouter</a>
                             </li>
 
-                            <li role="presentation">
-                                <a href="{{ route( 'logout' ) }}">Déconnexion</a>
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->email }} <span class="caret"></span></a>
+
+                                <ul class="dropdown-menu">
+
+                                    <li role="presentation">
+                                        <a href="{{ route( 'profile' ) }}">Profil</a>
+                                    </li>
+
+                                    <li role="presentation">
+                                        <a href="{{ route( 'logout' ) }}">Déconnexion</a>
+                                    </li>
+
+                                </ul>
+
                             </li>
+
+
+
 
                         @endif
 

@@ -53,6 +53,11 @@ Route::get( '/afficher/papier/{id}', [ 'as' => 'show_paper', 'uses' => 'PaperCon
 Route::get( '/categorie/{name}', [ 'as' => 'search_by_category', 'uses' => 'CategoriesController@search' ] );
 Route::post( '/search/autocomplete', 'CategoriesController@search_autocomplete' );
 
+// ------------------------------------------------------------
 
+// *******
+// PROFILE
+// *******
 
-
+Route::get( '/profil', [ 'as' => 'profile', 'uses' => 'UserController@profile' ] );
+Route::post( '/profil/{id}', [ 'as' => 'user_update', 'uses' => 'UserController@update' ] );
