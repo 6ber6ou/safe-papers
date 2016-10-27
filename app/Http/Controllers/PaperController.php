@@ -58,6 +58,20 @@ class PaperController extends Controller
 		$s3 = Storage::disk( 's3' );
 		$s3->put( '/safe-papers/' . $file_name, $image, 'public' );
 
+		// Save Thumb 150 px Height
+		$image = Image::make( $image )->widen( 150, function( $constraint )
+			{
+
+			$constraint->upsize();
+
+			} )->stream();
+
+		$image = $image->__toString();
+
+		$s3 = Storage::disk( 's3' );
+		$s3->put( '/safe-papers/thumbs/' . $file_name, $image, 'public' );
+
+		// Category
 		$category_exists = Category::where( 'name', $request->input( 'category' ) )->count();
 
 		if( $category_exists == 0 )
