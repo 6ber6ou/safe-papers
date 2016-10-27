@@ -34,6 +34,7 @@ elixir( mix =>
         'jquery/jquery.js',
         'jquery-ui/jquery-ui.js',
         'bootstrap/bootstrap.js',
+        'init_tooltip.js',
         'upload-image/jquery.form.js',
         'upload-image/upload_image.js',
         'ladda-button/spin.min.js',

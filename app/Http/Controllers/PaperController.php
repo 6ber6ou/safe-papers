@@ -58,8 +58,8 @@ class PaperController extends Controller
 		$s3 = Storage::disk( 's3' );
 		$s3->put( '/safe-papers/' . $file_name, $image, 'public' );
 
-		// Save Thumb 150 px Height
-		$image = Image::make( $image )->widen( 150, function( $constraint )
+		// Save Thumb 50 px Height
+		$image = Image::make( $image )->widen( 50, function( $constraint )
 			{
 
 			$constraint->upsize();
