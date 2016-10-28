@@ -11,7 +11,7 @@
 			<!-- INPUT GROUP -->
 			<div class="input-group">
 
-				<input type="text" name="search" class="form-control" placeholder="Rechercher...">
+				<input type="text" name="search" id="search" class="form-control" placeholder="Rechercher..." required autocomplete="off">
 
 				<span class="input-group-btn">
 					<button type="submit" class="btn btn-success" type="button">Go!</button>

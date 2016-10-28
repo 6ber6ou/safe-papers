@@ -31,8 +31,10 @@ class HomeController extends Controller
 
             $latest_papers = Paper::where( 'user_id', Auth::user()->id )->take( 5 )->orderBy( 'id', 'desc' )->get();
             $categories = Category::where( 'user_id', Auth::user()->id )->orderBy( 'name', 'ASC' )->get();
+            $papers = Paper::select( 'description' )->where( 'user_id', Auth::user()->id )->get()->toArray();
+            $papers = array_flatten( $papers );
 
-            JavaScript::put( [ 'categories' => array_flatten( $categories->toArray() ) ] );
+            JavaScript::put( [ 'papers' => $papers ] );
 
             return view( 'home', compact( 'page', 'latest_papers', 'categories', 'name' ) );
 

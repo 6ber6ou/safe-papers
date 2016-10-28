@@ -60,3 +60,31 @@
     <!-- End ... ROW -->
 
 @stop
+
+<!-- ============================================================ -->
+
+@section( 'scripts.footer' )
+
+    <script>
+
+        // *******************
+        // AUTOCOMPLETE PAPERS
+        // *******************
+
+        var paper = papers;
+
+        $( document ).ready( function()
+            {
+
+            $( '#search' ).autocomplete(
+                {
+
+                source : paper
+
+                } );
+
+            } );
+
+    </script>
+
+@stop
