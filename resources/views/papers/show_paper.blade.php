@@ -41,7 +41,7 @@
 
                 {{ csrf_field() }}
 
-                <a type="button" class="btn btn-default" href="{{ URL::previous() }}">Retour</a>
+                <a type="button" class="btn btn-default" href="{{ route( 'home' ) }}">Accueil</a>
                 &nbsp; <a href="{{ route( 'update_paper', $paper->id ) }}" class="btn btn-primary edit">Modifier</a>
                 &nbsp; <button type="button" class="btn btn-danger delete">Supprimer</button>
                 &nbsp; <button type="button" class="btn btn-info delete_no hidden">Non</button>

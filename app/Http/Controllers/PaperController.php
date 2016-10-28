@@ -186,6 +186,9 @@ class PaperController extends Controller
 
 		$page = 'show_paper';
 		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
+
+		if( $paper == NULL ) abort( 404 );
+
 		$paper->consulted_at = date( 'Y-m-d H:i:s' );
 		$paper->update();
 

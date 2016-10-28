@@ -34,6 +34,12 @@
 
     <body>
 
+        @if( ! isset( $apge ) )
+
+            {{ $page = '' }}
+
+        @endif
+
         <!-- CONTAINER -->
         <div class="container">
 
@@ -78,9 +84,6 @@
                                 </ul>
 
                             </li>
-
-
-
 
                         @endif
 
