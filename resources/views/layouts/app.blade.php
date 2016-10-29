@@ -34,12 +34,6 @@
 
     <body>
 
-        @if( ! isset( $apge ) )
-
-            {{ $page = '' }}
-
-        @endif
-
         <!-- CONTAINER -->
         <div class="container">
 
@@ -100,6 +94,20 @@
 
               </div>
             <!-- End ... HEADER -->
+
+            <!-- MESSAGE -->
+            @if( session( 'success' ) )
+
+                <div class="container">
+
+                    <div class="alert alert-success">
+                        {{ session( 'success' ) }}
+                    </div>
+
+                </div>
+
+            @endif
+            <!-- End ... MESSAGE -->
 
             <!-- CONTENT -->
             @yield( 'content' )

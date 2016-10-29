@@ -22,6 +22,7 @@ Route::post( '/mot-de-passe/oublie', [ 'as' => 'post_password_reset', 'uses' => 
 Route::get( '/reinitialisation/mot-de-passe/{token}', [ 'as' => 'initialize_password', 'uses' => 'Auth\ResetPasswordController@showResetForm' ] );
 Route::post( '/reinitialisation/mot-de-passe', [ 'as' => 'post_initialize_password', 'uses' => 'Auth\ResetPasswordController@reset' ] );
 
+Route::get( '/confirmation-compte/{id}/{token}', 'Auth\RegisterController@confirm' );
 
 // ------------------------------------------------------------
 

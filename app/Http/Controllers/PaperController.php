@@ -112,7 +112,7 @@ class PaperController extends Controller
 		{
 
 		// Delete Category if empty
-		$paper = Paper::find( $id )->where( 'user_id', Auth::user()->id )->first();
+		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
 		$paper_count = Paper::where( 'user_id', Auth::user()->id )->count();
 
 		if( $paper_count == 1 )

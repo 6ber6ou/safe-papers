@@ -4,6 +4,9 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use App\Notifications\RegisteredUser;
 
 class RegisterController extends Controller
     {
@@ -43,6 +46,48 @@ class RegisterController extends Controller
         $this->middleware( 'guest' );
 
         }
+
+    // ------------------------------------------------------------
+
+    public function confirm( $id, $token )
+        {
+
+        $user = User::where( 'id', $id )->where( 'confirmation_token', $token )->first();
+
+        if( $user )
+            {
+
+            $user->update( [ 'confirmation_token' => NULL ] );
+
+            $this->guard()->login( $user );
+
+            return redirect()->route( 'home' )->with( 'success', 'Votre compte a bien été confirmé !' );
+
+            }
+        else
+            {
+
+            return redirect()->route( 'login' )->with( 'error', 'Ce lien n\'est pas valide !' );
+
+            }
+
+        }
+
+    // ------------------------------------------------------------
+
+    public function register( Request $request )
+        {
+
+        $this->validator( $request->all() )->validate();
+
+        event( new Registered( $user = $this->create( $request->all() ) ) );
+
+        $user->notify( new RegisteredUser() );
+
+        return redirect()->route( 'login' )->with( 'success', 'Votre compte a bien été créé, vous devez le confirmer grâce à l\'email que vous allez reçevoir.' );
+
+        }
+
 
     // ------------------------------------------------------------
 
@@ -90,8 +135,9 @@ class RegisterController extends Controller
         return User::create(
             [
 
-            'email'         =>      $data[ 'email' ],
-            'password'      =>      bcrypt( $data[ 'password' ] )
+            'email'                     =>      $data[ 'email' ],
+            'password'                  =>      bcrypt( $data[ 'password' ] ),
+            'confirmation_token'        =>      str_replace( '/', '', bcrypt( str_random( 16 ) ) )
 
             ] );
 
