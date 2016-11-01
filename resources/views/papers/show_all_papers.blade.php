@@ -11,7 +11,7 @@
         <div class="col-md-6">
 
             <h3 class="text-center">
-                Tous les papiers
+                Tous les papiers &nbsp;<small>( {{ $papers->total() }} )</small>
             </h3>
 
             @if( count( $papers ) > 0 )

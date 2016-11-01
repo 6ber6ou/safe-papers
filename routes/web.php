@@ -56,7 +56,7 @@ Route::get( '/afficher/papiers', [ 'as' => 'show_all_papers', 'uses' => 'PaperCo
 
 Route::get( '/categorie/{name}', [ 'as' => 'search_by_category', 'uses' => 'CategoriesController@search' ] );
 Route::post( '/search/autocomplete', 'CategoriesController@search_autocomplete' );
-Route::post( '/search/papers', [ 'as' => 'seach_papers', 'uses' => 'SearchController@find' ] );
+Route::any( '/search/papers', [ 'as' => 'seach_papers', 'uses' => 'SearchController@find' ] );
 
 // ------------------------------------------------------------
 

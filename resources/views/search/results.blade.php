@@ -11,7 +11,7 @@
         <div class="col-md-6">
 
             <h3>
-                Résultats : " {{ $search }} " &nbsp;<small>( {{ $papers->count() }} )</small>
+                Résultats : " {{ $search }} " &nbsp;<small>( {{ $papers->total() }} )</small>
             </h3>
 
             @foreach( $papers as $paper )

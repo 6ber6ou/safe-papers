@@ -2,7 +2,7 @@
 	Recherche par catégorie
 </h3>
 
-<h4>
+<h4 style="line-height : 30px;">
 
 	@if( count( $categories ) > 0 )
 

@@ -16,7 +16,7 @@ class SearchController extends Controller
 		$page = 'results';
         $name = '';
 
-		$papers = Paper::where( 'description', 'LIKE', '%' . $request[ 'search' ] . '%' )->paginate();
+		$papers = Paper::where( 'description', 'LIKE', '%' . $request[ 'search' ] . '%' )->paginate( 10 );
 		$search = $request[ 'search' ];
         $categories = Category::where( 'user_id', Auth::user()->id )->orderBy( 'name', 'ASC' )->get();
 
