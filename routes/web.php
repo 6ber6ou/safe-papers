@@ -44,6 +44,8 @@ Route::post( '/effacer/papier/{id}', [ 'as' => 'delete_paper', 'uses' => 'PaperC
 Route::get( '/modifier/papier/{id}', [ 'as' => 'update_paper', 'uses' => 'PaperController@show_update' ] );
 Route::post( '/modifier/papier', [ 'as' => 'post_update_paper', 'uses' => 'PaperController@update' ] );
 Route::get( '/afficher/papier/{id}', [ 'as' => 'show_paper', 'uses' => 'PaperController@show' ] );
+Route::get( '/recadrer/papier/{id}', [ 'as' => 'resize_paper', 'uses' => 'PaperController@resize' ] );
+Route::post( '/post_recadrer/papier/{id}', [ 'as' => 'post_resize_paper', 'uses' => 'PaperController@post_resize' ] );
 
 // ------------------------------------------------------------
 

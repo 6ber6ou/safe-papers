@@ -14,7 +14,7 @@
 				<input type="text" name="search" id="search" class="form-control" placeholder="Rechercher..." required autocomplete="off">
 
 				<span class="input-group-btn">
-					<button type="submit" class="btn btn-success" type="button">Go!</button>
+					<button type="submit" class="ladda-button btn btn-success spinner" data-style="zoom-in" type="button">Go!</button>
 				</span>
 
 			</div>

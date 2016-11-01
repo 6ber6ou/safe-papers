@@ -16,7 +16,7 @@
 
             {{ $paper->description }} &nbsp;<span class="label label-info"><a href="{{ route( 'search_by_category', $paper->category->slug ) }}" style="text-decoration : none; color : white;"><span class="fa fa-folder"></span> &nbsp;{{ $paper->category->name }}</span></a>
 
-            <div style="margin : 20px auto 0 auto; width : 700px; min-height : 200px; background : url(/img/circle-loader.gif) no-repeat center center;">
+            <div style="margin : 20px auto 0 auto; width : 700px; min-height : 50px; background : url(/img/circle-loader.gif) no-repeat center center;">
                 <img src="https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ $paper->path }}" class="img-responsive pannable-image" alt="Document">
             </div>
 
@@ -42,7 +42,8 @@
                 {{ csrf_field() }}
 
                 <a type="button" class="btn btn-default" href="{{ route( 'home' ) }}">Accueil</a>
-                &nbsp; <a href="{{ route( 'update_paper', $paper->id ) }}" class="btn btn-primary edit">Modifier</a>
+                &nbsp; <a type="button" class="ladda-button btn btn-success spinner" data-style="zoom-in" href="{{ route( 'resize_paper', $paper->id ) }}">Recadrer</a>
+                &nbsp; <a href="{{ route( 'update_paper', $paper->id ) }}" class="ladda-button btn btn-primary edit" data-style="zoom-in">Modifier</a>
                 &nbsp; <button type="button" class="btn btn-danger delete">Supprimer</button>
                 &nbsp; <button type="button" class="btn btn-info delete_no hidden">Non</button>
                 &nbsp; <button type="submit" class="btn btn-danger delete_yes hidden spinner" data-style="zoom-in">Oui</button>

@@ -196,4 +196,56 @@ class PaperController extends Controller
 
 		}
 
+    // ------------------------------------------------------------
+
+	public function resize( $id )
+		{
+
+		$page = 'resize_paper';
+		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
+
+		list( $width_img, $height_img ) = getimagesize( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path );
+
+		if( $paper == NULL ) abort( 404 );
+
+        return view( 'papers.resize_paper', compact( 'page', 'paper', 'width_img', 'height_img' ) );
+
+		}
+
+    // ------------------------------------------------------------
+
+	public function post_resize( Request $request, $id )
+		{
+
+		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
+
+		if( $request->input( 'cx' ) != '' && $request->input( 'cy' ) != '' && $request->input( 'cw' ) != '' &&  $request->input( 'ch' ) != '' )
+			{
+
+			$image = Image::make( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path );
+			$image->crop( $request->input( 'cw' ) , $request->input( 'ch' ), $request->input( 'cx' ), $request->input( 'cy' ) )->stream();
+			$image = $image->__toString();
+
+			$s3 = Storage::disk( 's3' );
+			$s3->put( $paper->path, $image, 'public' );
+
+			// Save Thumb 50 px Height
+			$image = Image::make( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path )->widen( 50, function( $constraint )
+				{
+
+				$constraint->upsize();
+
+				} )->stream();
+
+			$image = $image->__toString();
+
+			$s3 = Storage::disk( 's3' );
+			$s3->put( '/safe-papers/thumbs/' . str_replace( 'safe-papers', '', $paper->path) , $image, 'public' );
+
+			}
+
+		return redirect()->route( 'show_paper', $paper->id );
+
+		}
+
 	}

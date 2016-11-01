@@ -16,6 +16,7 @@ elixir( mix =>
     	'./public/css/app.css',
         './public/css/style.css',
         'font-awesome.css',
+        'jcrop/jcrop.css',
         'ladda-button/ladda-themeless.min.css',
         'image-viewer/imageviewer.css',
         'jquery-ui/jquery-ui.css'
@@ -34,6 +35,7 @@ elixir( mix =>
         'jquery/jquery.js',
         'jquery-ui/jquery-ui.js',
         'bootstrap/bootstrap.js',
+        'jcrop/jcrop.js',
         'init_tooltip.js',
         'upload-image/jquery.form.js',
         'upload-image/upload_image.js',
