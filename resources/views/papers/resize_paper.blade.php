@@ -63,9 +63,9 @@
                 <input type="hidden" name="ch" id="ch" value="">
                 <input type="hidden" name="fact" id="fact" value="{{ $width_img > 700 ? $width_img / 700 : 1 }}">
 
-                <a type="button" class="btn btn-default" href="{{ route( 'home' ) }}">Accueil</a>
+                <a type="button" class="btn btn-default" href="{{ route( 'home' ) }}"><span class="fa fa-home"></span>&nbsp; Accueil</a>
                 &nbsp; <button type="submit" class="ladda-button btn btn-primary spinner edit" data-style="zoom-in">
-                            Valider
+                            <span class="fa fa-check"></span>&nbsp; Valider
                         </button>
 
             </form>

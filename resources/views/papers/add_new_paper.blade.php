@@ -131,7 +131,7 @@
                     <div class="col-md-8 col-md-offset-4">
 
                         <a href="{{ route( 'home' ) }}" class="btn btn-default">
-                            Annuler
+                            <span class="fa fa-home"></span>&nbsp; Annuler
                         </a>
 
                         &nbsp;&nbsp;
