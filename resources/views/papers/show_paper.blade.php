@@ -17,7 +17,7 @@
             {{ $paper->description }} &nbsp;<span class="label label-info"><a href="{{ route( 'search_by_category', $paper->category->slug ) }}" style="text-decoration : none; color : white;"><span class="fa fa-folder"></span> &nbsp;{{ $paper->category->name }}</span></a>
 
             <div style="margin : 20px auto 0 auto; width : 700px; min-height : 50px; background : url(/img/circle-loader.gif) no-repeat center center;">
-                <img src="https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ $paper->path }}" class="img-responsive pannable-image" alt="Document">
+                <img src="https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ $paper->path }}?{{ round( 1, 99999 ) }}" class="img-responsive pannable-image" alt="Document">
             </div>
 
 		</div>
