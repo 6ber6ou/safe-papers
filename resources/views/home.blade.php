@@ -32,7 +32,8 @@
 
             @else
 
-                <a class="btn btn-lg btn-primary" href="{{ route( 'add_new_paper' ) }}" role="button">Ajouter un papier</a>
+                <a class="btn btn-lg btn-primary" href="{{ route( 'add_new_paper' ) }}" role="button"><span class="fa fa-plus">&nbsp; </span>Ajouter un papier</a>
+                &nbsp; <a class="btn btn-lg btn-info" href="{{ route( 'show_all_papers' ) }}" role="button"><span class="fa fa-eye">&nbsp; </span>Voir tous les papiers</a>
 
             @endif
 

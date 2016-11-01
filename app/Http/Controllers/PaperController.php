@@ -124,6 +124,7 @@ class PaperController extends Controller
 
 		// Delete file on S3
 		Storage::disk( 's3' )->delete( $paper->path );
+		Storage::disk( 's3' )->delete( str_replace( 'safe-papers', 'safe-papers/thumbs', $paper->path ) );
 
 		$paper->delete();
 
@@ -245,6 +246,20 @@ class PaperController extends Controller
 			}
 
 		return redirect()->route( 'show_paper', $paper->id );
+
+		}
+
+    // ------------------------------------------------------------
+
+	public function show_all()
+		{
+
+		$page = 'show_all_papers';
+		$name = '';
+		$papers = Paper::where( 'user_id', Auth::user()->id )->paginate( 10 );
+		$categories = Category::where( 'user_id', Auth::user()->id )->orderBy( 'name', 'ASC' )->get();
+
+        return view( 'papers.show_all_papers', compact( 'page', 'papers', 'name', 'categories' ) );
 
 		}
 

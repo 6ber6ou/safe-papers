@@ -14,14 +14,13 @@
 				<input type="text" name="search" id="search" class="form-control" placeholder="Rechercher..." required autocomplete="off">
 
 				<span class="input-group-btn">
-					<button type="submit" class="ladda-button btn btn-success spinner" data-style="zoom-in" type="button">Go!</button>
+					<button type="submit" class="ladda-button btn btn-success spinner" data-style="zoom-in" type="button">Go &nbsp;<span class="fa fa-exclamation"></span></button>
 				</span>
 
 			</div>
 			<!-- End ... INPUT GROUP -->
 
 		</form>
-
 
 	</div>
 	<!-- End ... COL MD 8 -->

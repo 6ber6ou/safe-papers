@@ -34,9 +34,9 @@ Route::get( '/', [ 'as' => 'home', 'uses' => 'HomeController@index' ] );
 
 // ------------------------------------------------------------
 
-// *************
-// ADD NEW PAPER
-// *************
+// ******
+// PAPERS
+// ******
 
 Route::get( '/ajouter/nouveau-papier', [ 'as' => 'add_new_paper', 'uses' => 'PaperController@add' ] );
 Route::post( '/sauvegarder/nouveau-papier', [ 'as' => 'save_new_paper', 'uses' => 'PaperController@save' ] );
@@ -46,6 +46,7 @@ Route::post( '/modifier/papier', [ 'as' => 'post_update_paper', 'uses' => 'Paper
 Route::get( '/afficher/papier/{id}', [ 'as' => 'show_paper', 'uses' => 'PaperController@show' ] );
 Route::get( '/recadrer/papier/{id}', [ 'as' => 'resize_paper', 'uses' => 'PaperController@resize' ] );
 Route::post( '/post_recadrer/papier/{id}', [ 'as' => 'post_resize_paper', 'uses' => 'PaperController@post_resize' ] );
+Route::get( '/afficher/papiers', [ 'as' => 'show_all_papers', 'uses' => 'PaperController@show_all' ] );
 
 // ------------------------------------------------------------
 
