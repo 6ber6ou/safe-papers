@@ -48,17 +48,17 @@
                         @if( ! Auth::check() )
 
                             <li role="presentation" class="{{ $page == 'home' ? 'active' : '' }}">
-                                <a href="{{ route( 'home' ) }}">Accueil</a>
+                                <a href="{{ route( 'home' ) }}"><span class="fa fa-home"></span>&nbsp; Accueil</a>
                             </li>
 
                             <li role="presentation" class="{{ $page == 'register' ? 'active' : '' }}">
-                                <a href="{{ route( 'register' ) }}">Inscription</a>
+                                <a href="{{ route( 'register' ) }}"><span class="fa fa-pencil-square-o"></span>&nbsp; Inscription</a>
                             </li>
 
                         @else
 
                             <li role="presentation" class="{{ $page == 'add_paper' ? 'active' : '' }}">
-                                <a href="{{ route( 'add_new_paper' ) }}">Ajouter</a>
+                                <a href="{{ route( 'add_new_paper' ) }}"><span class="fa fa-plus"></span> &nbsp;Ajouter</a>
                             </li>
 
                             <li class="dropdown">
@@ -68,11 +68,11 @@
                                 <ul class="dropdown-menu">
 
                                     <li role="presentation">
-                                        <a href="{{ route( 'profile' ) }}">Profil</a>
+                                        <a href="{{ route( 'profile' ) }}"><span class="fa fa-user"></span>&nbsp; Profil</a>
                                     </li>
 
                                     <li role="presentation">
-                                        <a href="{{ route( 'logout' ) }}">Déconnexion</a>
+                                        <a href="{{ route( 'logout' ) }}"><span class="fa fa-sign-out"></span>&nbsp; Déconnexion</a>
                                     </li>
 
                                 </ul>

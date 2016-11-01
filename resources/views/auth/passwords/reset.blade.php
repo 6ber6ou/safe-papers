@@ -117,7 +117,7 @@
                     <div class="col-md-6 col-md-offset-4">
 
                         <button type="submit" class="btn btn-primary">
-                            Réinitialiser votre mot de passe
+                            <span class="fa fa-rotate-right"></span>&nbsp; Réinitialiser votre mot de passe
                         </button>
 
                     </div>

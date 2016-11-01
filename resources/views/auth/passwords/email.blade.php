@@ -64,7 +64,7 @@
                     <div class="col-md-6 col-md-offset-4">
 
                         <button type="submit" class="btn btn-primary">
-                            Envoyer un nouveau mot de passe
+                            <span class="fa fa-send-o"></span>&nbsp; Envoyer un nouveau mot de passe
                         </button>
 
                     </div>

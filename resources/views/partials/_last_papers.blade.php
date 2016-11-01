@@ -8,21 +8,31 @@
 			Derniers papiers uploadés
 		</h3>
 
-		@foreach( $latest_papers as $paper )
+		@if( count( $latest_papers ) > 0 )
 
-			<!-- PARAGARPH -->
-			<p id="paragraph_{{ $paper->id }}">
+			@foreach( $latest_papers as $paper )
 
-				<a href="{{ route( 'show_paper', $paper->id ) }}" data-tooltip title="<img src='https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ str_replace( 'safe-papers', 'safe-papers/thumbs', $paper->path ) }}?{{ rand() }}' alt=''>" alt="">{{ $paper->description }}</a>
-				<br>
-				<a href="{{ route( 'search_by_category', str_slug( $paper->category->name ) ) }}" style="text-decoration : none;"><span class="label label-info"><span class="fa fa-folder"></span> &nbsp;{{ $paper->category->name }}</span></a>
-				<br>
-				{{ Jenssegers\Date\Date::parse( $paper->created_at )->diffForHumans() }}
+				<!-- PARAGARPH -->
+				<p id="paragraph_{{ $paper->id }}">
 
+					<a href="{{ route( 'show_paper', $paper->id ) }}" data-tooltip title="<img src='https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ str_replace( 'safe-papers', 'safe-papers/thumbs', $paper->path ) }}?{{ rand() }}' alt=''>" alt="">{{ $paper->description }}</a>
+					<br>
+					<a href="{{ route( 'search_by_category', str_slug( $paper->category->name ) ) }}" style="text-decoration : none;"><span class="label label-info"><span class="fa fa-folder"></span> &nbsp;{{ $paper->category->name }}</span></a>
+					<br>
+					{{ Jenssegers\Date\Date::parse( $paper->created_at )->diffForHumans() }}
+
+				</p>
+				<!-- End ... PARAGARPH -->
+
+			@endforeach
+
+		@else
+
+			<p class="text-center">
+				Pas de document&nbsp; <span class="fa fa-exclamation"></span>
 			</p>
-			<!-- End ... PARAGARPH -->
 
-		@endforeach
+		@endif
 
 	</div>
 	<!-- End ... COL MD 6 -->

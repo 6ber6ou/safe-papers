@@ -99,30 +99,6 @@
                 </div>
                 <!-- End ... FORM GROUP -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <!-- FORM GROUP -->
                 <div class="form-group">
 
@@ -136,7 +112,7 @@
                         &nbsp;&nbsp;
 
                         <button class="ladda-button btn btn-primary spinner" id="add_paper" data-style="zoom-in">
-                            Modifier
+                            <span class="fa fa-pencil"></span>&nbsp; Modifier
                         </button>
 
                     </div>

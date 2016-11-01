@@ -28,7 +28,7 @@
 
             @if( ! Auth::check() )
 
-                <a class="btn btn-lg btn-success" href="{{ route( 'login' ) }}" role="button">Connectez-vous</a>
+                <a class="btn btn-lg btn-success" href="{{ route( 'login' ) }}" role="button"><span class="fa fa-sign-in"></span>&nbsp; Connectez-vous</a>
 
             @else
 

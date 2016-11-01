@@ -137,7 +137,7 @@
                         &nbsp;&nbsp;
 
                         <button class="ladda-button btn btn-primary spinner" id="add_paper" data-style="zoom-in">
-                            Ajouter
+                            <span class="fa fa-plus"></span>&nbsp; Ajouter
                         </button>
 
                     </div>

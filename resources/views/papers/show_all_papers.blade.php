@@ -14,6 +14,8 @@
                 Tous les papiers
             </h3>
 
+            @if( count( $papers ) > 0 )
+
             @foreach( $papers as $paper )
 
                 <!-- PARAGARPH -->
@@ -31,6 +33,14 @@
             @endforeach
 
             {{ $papers->links() }}
+
+            @else
+
+                <p class="text-center">
+                    Pas de document&nbsp; <span class="fa fa-exclamation"></span>
+                </p>
+
+            @endif
 
         </div>
         <!-- End ... COL MD 6 -->
