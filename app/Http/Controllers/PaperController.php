@@ -256,7 +256,7 @@ class PaperController extends Controller
 
 		$page = 'show_all_papers';
 		$name = '';
-		$papers = Paper::where( 'user_id', Auth::user()->id )->paginate( 10 );
+		$papers = Paper::where( 'user_id', Auth::user()->id )->orderBy( 'updated_at', 'DESC' )->paginate( 10 );
 		$categories = Category::where( 'user_id', Auth::user()->id )->orderBy( 'name', 'ASC' )->get();
 
         return view( 'papers.show_all_papers', compact( 'page', 'papers', 'name', 'categories' ) );
