@@ -263,4 +263,37 @@ class PaperController extends Controller
 
 		}
 
+    // ------------------------------------------------------------
+
+	public function rotate( $id )
+		{
+
+		$page = 'rotate_paper';
+		$name = '';
+		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
+
+		$image = Image::make( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path );
+		$image->rotate( - 90 )->stream();
+		$image = $image->__toString();
+
+		$s3 = Storage::disk( 's3' );
+		$s3->put( $paper->path, $image, 'public' );
+
+		// Save Thumb 50 px Height
+		$image = Image::make( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path )->widen( 50, function( $constraint )
+			{
+
+			$constraint->upsize();
+
+			} )->stream();
+
+		$image = $image->__toString();
+
+		$s3 = Storage::disk( 's3' );
+		$s3->put( '/safe-papers/thumbs/' . str_replace( 'safe-papers', '', $paper->path) , $image, 'public' );
+
+		return redirect()->route( 'show_paper', $paper->id );
+
+		}
+
 	}

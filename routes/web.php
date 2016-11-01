@@ -47,6 +47,7 @@ Route::get( '/afficher/papier/{id}', [ 'as' => 'show_paper', 'uses' => 'PaperCon
 Route::get( '/recadrer/papier/{id}', [ 'as' => 'resize_paper', 'uses' => 'PaperController@resize' ] );
 Route::post( '/post_recadrer/papier/{id}', [ 'as' => 'post_resize_paper', 'uses' => 'PaperController@post_resize' ] );
 Route::get( '/afficher/papiers', [ 'as' => 'show_all_papers', 'uses' => 'PaperController@show_all' ] );
+Route::any( '/rotation/papier/{id}', [ 'as' => 'rotate_paper', 'uses' => 'PaperController@rotate' ] );
 
 // ------------------------------------------------------------
 

@@ -44,7 +44,8 @@
                 {{ csrf_field() }}
 
                 <a type="button" class="btn btn-default" href="{{ route( 'home' ) }}"><span class="fa fa-home"></span>&nbsp; Accueil</a>
-                &nbsp; <a type="button" class="ladda-button btn btn-success spinner" data-style="zoom-in" href="{{ route( 'resize_paper', $paper->id ) }}"><span class="fa fa-crop"></span>&nbsp; Recadrer</a>
+                &nbsp; <a type="button" class="ladda-button btn btn-success" data-style="zoom-in" href="{{ route( 'resize_paper', $paper->id ) }}"><span class="fa fa-crop"></span>&nbsp; Recadrer</a>
+                &nbsp; <a type="button" class="ladda-button btn btn-info spinner" data-style="zoom-in" href="{{ route( 'rotate_paper', $paper->id ) }}"><span class="fa fa-rotate-right"></span></a>
                 &nbsp; <a href="{{ route( 'update_paper', $paper->id ) }}" class="ladda-button btn btn-primary edit" data-style="zoom-in"><span class="fa fa-pencil"></span>&nbsp; Modifier</a>
                 &nbsp; <button type="button" class="btn btn-danger delete"><span class="fa fa-times"></span>&nbsp; Supprimer</button>
                 &nbsp; <button type="button" class="btn btn-info delete_no hidden">Non</button>

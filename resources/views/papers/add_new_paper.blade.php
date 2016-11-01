@@ -4,7 +4,6 @@
 
 @section( 'content' )
 
-
     <!-- ROW -->
     <div class="row">
 
