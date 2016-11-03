@@ -17,9 +17,15 @@ class CreatePapersTable extends Migration
             $table->string( 'description' );
             $table->string( 'path' );
             $table->integer( 'user_id' );
-            $table->integer( 'category_id' );
+            $table->integer( 'category_id' )->unsigned();
             $table->timestamp( 'consulted_at' )->nullable();
             $table->timestamps();
+
+            $table->foreign( 'category_id' )
+                  ->references( 'id' )
+                  ->on( 'categories' )
+                  ->onUpdate( 'cascade' )
+                  ->onDelete( 'cascade' );
 
             } );
 

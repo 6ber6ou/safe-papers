@@ -16,12 +16,6 @@
 
 		@endforeach
 
-	@else
-
-		<p class="text-center" style="font-size: 0.75em;">
-			Pas de document&nbsp; <span class="fa fa-exclamation"></span>
-		</p>
-
 	@endif
 
 </h4>

@@ -43,7 +43,7 @@
     <!-- End ... JUMBOTRON -->
 
     <!-- ROW -->
-    <div class="row marketing" style="margin-bottom : 0;">
+    <div class="row marketing" style="margin-bottom : -10px;">
 
         @if( ! Auth::check() )
 

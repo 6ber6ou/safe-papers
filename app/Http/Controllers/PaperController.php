@@ -150,28 +150,12 @@ class PaperController extends Controller
 	public function update( UpdatePaperRequest $request )
 		{
 
-		$category = Category::where( 'name', $request->input( 'category' ) )
-							->where( 'user_id', Auth::user()->id )
-							->first();
-
-		if( $category == NULL )
-			{
-
-			$category = Category::create(
-				[
-
-				'name' => ucfirst( $request->input( 'category' ) ),
-				'slug' => str_slug( $request->input( 'category' ) ),
-				'user_id' => Auth::user()->id
-
-				] );
-
-			}
-
 		$paper = Paper::findOrFail( $request->input( 'paper_id' ) );
 		$paper->description = $request->input( 'description' );
-		$paper->category_id = $category->id;
-		$paper->update();
+		$paper->category->name = ucfirst( $request->input( 'category' ) );
+		$paper->category->slug = str_slug( $request->input( 'category' ) );
+		$paper->category->save();
+		$paper->save();
 
 		flash( 'Opération effectuée avec succès !', 'success' );
 
