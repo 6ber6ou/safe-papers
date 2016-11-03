@@ -70,6 +70,13 @@ return
             'bucket'            =>      'images.6ber6ou.com',
             'visibility'        =>      'public'
 
+            ],
+        'uploads'       =>
+            [
+
+            'driver'            =>      'local',
+            'root'              =>      public_path() . '/papers'
+
             ]
 
         ]

@@ -18,7 +18,7 @@
 
                 <p>
 
-                    <a href="{{ route( 'show_paper', $paper->id ) }}" data-tooltip title="<img src='https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ str_replace( 'safe-papers', 'safe-papers/thumbs', $paper->path ) }}' alt=''>">{{ $paper->description }}</a>
+                    <a href="{{ route( 'show_paper', $paper->id ) }}" data-tooltip title="<img src='{{ asset( 'papers/public/thumbs/' . $paper->path ) }}?{{ uniqid() }}' alt=''>">{{ $paper->description }}</a>
                     &nbsp; <span class="label label-primary"><span class="fa fa-folder-o"></span> &nbsp;{{ $paper->category->name }}</span>
                     <br>
                     {{ Jenssegers\Date\Date::parse( $paper->created_at )->diffForHumans() }}

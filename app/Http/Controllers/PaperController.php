@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePaperRequest;
 use App\Paper;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use File;
 use Image;
 use JavaScript;
 
@@ -55,8 +56,7 @@ class PaperController extends Controller
 
 		$file_name = uniqId() . '.jpg';
 
-		$s3 = Storage::disk( 's3' );
-		$s3->put( '/safe-papers/' . $file_name, $image, 'public' );
+		Storage::disk( 'uploads' )->put( '/public/' . $file_name, $image );
 
 		// Save Thumb 50 px Height
 		$image = Image::make( $image )->widen( 50, function( $constraint )
@@ -68,8 +68,7 @@ class PaperController extends Controller
 
 		$image = $image->__toString();
 
-		$s3 = Storage::disk( 's3' );
-		$s3->put( '/safe-papers/thumbs/' . $file_name, $image, 'public' );
+		Storage::disk( 'uploads' )->put( '/public/thumbs/' . $file_name, $image );
 
 		// Category
 		$category_exists = Category::where( 'name', $request->input( 'category' ) )->count();
@@ -94,7 +93,7 @@ class PaperController extends Controller
 			[
 
 			'description' => $request->input( 'description' ),
-			'path' => 'safe-papers/' . $file_name,
+			'path' => $file_name,
 			'user_id' => Auth::user()->id,
 			'category_id' => $category->id
 
@@ -122,9 +121,9 @@ class PaperController extends Controller
 
 			}
 
-		// Delete file on S3
-		Storage::disk( 's3' )->delete( $paper->path );
-		Storage::disk( 's3' )->delete( str_replace( 'safe-papers', 'safe-papers/thumbs', $paper->path ) );
+		// Delete file
+		File::delete( 'papers/public/' . $paper->path );
+		File::delete( 'papers/public/thumbs/' . $paper->path );
 
 		$paper->delete();
 
@@ -205,7 +204,7 @@ class PaperController extends Controller
 		$page = 'resize_paper';
 		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
 
-		list( $width_img, $height_img ) = getimagesize( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path );
+		list( $width_img, $height_img ) = getimagesize( asset( 'papers/public/' . $paper->path ) );
 
 		if( $paper == NULL ) abort( 404 );
 
@@ -223,15 +222,14 @@ class PaperController extends Controller
 		if( $request->input( 'cx' ) != '' && $request->input( 'cy' ) != '' && $request->input( 'cw' ) != '' &&  $request->input( 'ch' ) != '' )
 			{
 
-			$image = Image::make( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path );
+			$image = Image::make( asset( 'papers/public/' . $paper->path ) );
 			$image->crop( $request->input( 'cw' ) , $request->input( 'ch' ), $request->input( 'cx' ), $request->input( 'cy' ) )->stream();
 			$image = $image->__toString();
 
-			$s3 = Storage::disk( 's3' );
-			$s3->put( $paper->path, $image, 'public' );
+			Storage::disk( 'uploads' )->put( '/public/' . $paper->path, $image );
 
 			// Save Thumb 50 px Height
-			$image = Image::make( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path )->widen( 50, function( $constraint )
+			$image = Image::make( asset( 'papers/public/' . $paper->path ) )->widen( 50, function( $constraint )
 				{
 
 				$constraint->upsize();
@@ -240,8 +238,7 @@ class PaperController extends Controller
 
 			$image = $image->__toString();
 
-			$s3 = Storage::disk( 's3' );
-			$s3->put( '/safe-papers/thumbs/' . str_replace( 'safe-papers', '', $paper->path) , $image, 'public' );
+			Storage::disk( 'uploads' )->put( '/public/thumbs/' . $paper->path, $image );
 
 			}
 
@@ -272,15 +269,14 @@ class PaperController extends Controller
 		$name = '';
 		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
 
-		$image = Image::make( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path );
+		$image = Image::make( asset( 'papers/public/' . $paper->path ) );
 		$image->rotate( - 90 )->stream();
 		$image = $image->__toString();
 
-		$s3 = Storage::disk( 's3' );
-		$s3->put( $paper->path, $image, 'public' );
+		Storage::disk( 'uploads' )->put( '/public/' . $paper->path, $image );
 
 		// Save Thumb 50 px Height
-		$image = Image::make( 'https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/' . $paper->path )->widen( 50, function( $constraint )
+		$image = Image::make( asset( 'papers/public/' . $paper->path ) )->widen( 50, function( $constraint )
 			{
 
 			$constraint->upsize();
@@ -289,8 +285,7 @@ class PaperController extends Controller
 
 		$image = $image->__toString();
 
-		$s3 = Storage::disk( 's3' );
-		$s3->put( '/safe-papers/thumbs/' . str_replace( 'safe-papers', '', $paper->path) , $image, 'public' );
+		Storage::disk( 'uploads' )->put( '/public/thumbs/' . $paper->path, $image );
 
 		return redirect()->route( 'show_paper', $paper->id );
 

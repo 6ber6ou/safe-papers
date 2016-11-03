@@ -19,7 +19,7 @@
             {{ Jenssegers\Date\Date::parse( $paper->created_at )->diffForHumans() }}
 
             <div style="margin : 20px auto 0 auto; width : 700px; min-height : 50px; background : url(/img/circle-loader.gif) no-repeat center center;">
-                <img src="https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ $paper->path }}?{{ round( 1, 99999 ) }}" class="img-responsive pannable-image" alt="Document">
+               <img src="{{ asset( 'papers/public/' . $paper->path ) }}?{{ uniqid() }}" class="img-responsive pannable-image" alt="Document">
             </div>
 
 		</div>

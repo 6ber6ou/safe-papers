@@ -33,7 +33,11 @@
             {{ $paper->description }} &nbsp;<span class="label label-info"><a href="{{ route( 'search_by_category', $paper->category->slug ) }}" style="text-decoration : none; color : white;"><span class="fa fa-folder"></span> &nbsp;{{ $paper->category->name }}</span></a>
 
             <div style="margin : 20px auto 0 auto !important; text-align : center; width : 700px; min-height : 50px; background : url(/img/circle-loader.gif) no-repeat center center;">
-                <img src="https://s3-us-west-2.amazonaws.com/images.6ber6ou.com/{{ $paper->path }}?{{ round( 1, 99999 ) }}" style="margin : 0 auto;" class="img-responsive resize_jcrop" alt="Document">
+                <img src="{{ asset( 'papers/public/' . $paper->path ) }}?{{ uniqid() }}" style="margin : 0 auto;" class="img-responsive resize_jcrop" alt="Document">
+
+
+
+
             </div>
 
         </div>
