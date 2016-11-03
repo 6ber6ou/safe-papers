@@ -171,8 +171,6 @@ class PaperController extends Controller
 		$page = 'show_paper';
 		$paper = Paper::where( 'id', $id )->where( 'user_id', Auth::user()->id )->first();
 
-		if( $paper == NULL ) abort( 404 );
-
 		$paper->consulted_at = date( 'Y-m-d H:i:s' );
 		$paper->update();
 
@@ -275,4 +273,45 @@ class PaperController extends Controller
 
 		}
 
+    // ------------------------------------------------------------
+
+	public function show_paper_prev( $id )
+		{
+
+		$page = 'show_paper_prev';
+		$name = '';
+
+		$paper = Paper::where( 'id', '<', $id )->where( 'user_id', Auth::user()->id )->orderBy( 'id', 'DESC' )->first();
+
+		if( $paper == NULL )
+			{
+
+			$paper = Paper::where( 'user_id', Auth::user()->id )->orderBy( 'id', 'DESC' )->first();
+
+			}
+
+        return view( 'papers.show_paper', compact( 'page', 'paper' ) );
+
+		}
+
+    // ------------------------------------------------------------
+
+	public function show_paper_next( $id )
+		{
+
+		$page = 'show_paper_next';
+		$name = '';
+
+		$paper = Paper::where( 'id', '>', $id )->where( 'user_id', Auth::user()->id )->orderBy( 'id', 'ASC' )->first();
+
+		if( $paper == NULL )
+			{
+
+			$paper = Paper::where( 'user_id', Auth::user()->id )->orderBy( 'id', 'ASC' )->first();
+
+			}
+
+        return view( 'papers.show_paper', compact( 'page', 'paper' ) );
+
+		}
 	}

@@ -48,6 +48,8 @@ Route::get( '/recadrer/papier/{id}', [ 'as' => 'resize_paper', 'uses' => 'PaperC
 Route::post( '/post_recadrer/papier/{id}', [ 'as' => 'post_resize_paper', 'uses' => 'PaperController@post_resize' ] );
 Route::get( '/afficher/papiers', [ 'as' => 'show_all_papers', 'uses' => 'PaperController@show_all' ] );
 Route::any( '/rotation/papier/{id}', [ 'as' => 'rotate_paper', 'uses' => 'PaperController@rotate' ] );
+Route::get( '/afficher/papier-precedent/{id}', [ 'as' => 'show_paper_prev', 'uses' => 'PaperController@show_paper_prev' ] );
+Route::get( '/afficher/papier-next/{id}', [ 'as' => 'show_paper_next', 'uses' => 'PaperController@show_paper_next' ] );
 
 // ------------------------------------------------------------
 

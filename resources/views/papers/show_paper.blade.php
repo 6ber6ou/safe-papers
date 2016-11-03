@@ -18,6 +18,13 @@
             <br>
             {{ Jenssegers\Date\Date::parse( $paper->created_at )->diffForHumans() }}
 
+            <p style="margin-top : 20px;">
+                Naviguer parmis tous vos papiers.
+            </p>
+
+            <a type="button" class="btn btn-default" href="{{ route( 'show_paper_prev', $paper->id ) }}"><span class="fa fa-arrow-left"></span></a>
+            &nbsp; <a type="button" class="btn btn-default" href="{{ route( 'show_paper_next', $paper->id ) }}"><span class="fa fa-arrow-right"></span></a>
+
             <div style="margin : 20px auto 0 auto; width : 700px; min-height : 50px; background : url(/img/circle-loader.gif) no-repeat center center;">
                <img src="{{ asset( 'papers/public/' . $paper->path ) }}?{{ uniqid() }}" class="img-responsive pannable-image" alt="Document">
             </div>
@@ -36,7 +43,7 @@
         <!-- End ... COL MD 12 -->
 
         <!-- COL MD 12 -->
-        <div class="col-md-12 text-center" style="margin-bottom : 30px;">
+        <div class="col-md-12 text-center" style="margin-bottom : 15px;">
 
             <!-- FORM -->
             <form action="{{ route( 'delete_paper', $paper->id ) }}" method="POST">
