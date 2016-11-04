@@ -11,7 +11,7 @@
         <div class="col-md-6">
 
             <h3>
-                Résultat : <span class="label label-primary"><span class="fa fa-folder-o"></span> &nbsp;{{ $category->name }}</span> <small>( {{ $papers->count() }} )</small>
+                Résultat : <span class="label label-primary"><span class="fa fa-folder-o"></span> &nbsp;{{ $category->name }}</span> <small>( {{ $papers->total() }} )</small>
             </h3>
 
             @foreach( $papers as $paper )

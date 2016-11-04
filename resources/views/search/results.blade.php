@@ -27,9 +27,7 @@
 
             @endforeach
 
-            <p>
-                {{ $papers->links() }}
-            </p>
+            {{ $papers->links() }}
 
         </div>
         <!-- End ... COL MD 6 -->
